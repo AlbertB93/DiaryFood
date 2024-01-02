@@ -1,0 +1,15 @@
+:root {
+  --color-main: rgb(32, 30, 30);
+  --color-font: rgb(255, 200, 0);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-main);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
