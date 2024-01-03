@@ -1,6 +1,7 @@
 :root {
   --color-main: rgb(32, 30, 30);
   --color-font: rgb(255, 200, 0);
+  --color-border: rgb(77, 74, 74);
 }
 
 * {

@@ -1,5 +1,6 @@
 .content {
-    border: solid 1px blue;
+    border: solid 3px rgb(77, 74, 74);
+        border-radius: 8px;
     min-height: 500px;
     width: 54vw;
 }

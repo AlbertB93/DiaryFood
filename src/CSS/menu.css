@@ -1,5 +1,14 @@
 .menu {
-    border: solid 1px yellow;
-    min-height: 500px;
+    border: solid 3px var(--color-border);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: row;
+        height: 500px;
     width: 14vw;
+}
+h2 {
+    border-bottom: solid 2px whitesmoke;
+    color: var(--color-font);
+    text-align: center;
+    width: 90%;
 }
