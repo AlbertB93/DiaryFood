@@ -1,0 +1,17 @@
+.content {
+  border: solid 3px rgb(77, 74, 74);
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  min-height: 500px;
+  padding: 12px;
+  width: 62vw;
+}
+
+.shortDescription {
+  color: var(--color-font);
+  font-size: 1.5rem;
+  padding: 20px;
+  width: 90%;
+}

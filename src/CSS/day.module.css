@@ -1,0 +1,37 @@
+.day {
+  align-items: center;
+  border: solid 3px rgb(77, 74, 74);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 500px;
+  width: 20vw;
+}
+
+.imgContainer {
+  background-color: var(--color-main);
+  border: solid 4px silver;
+  border-radius: 90px;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: -60px;
+  width: 150px;
+}
+
+.logoImg {
+  margin: auto auto;
+  max-height: 110%;
+}
+
+.title {
+  border-bottom: solid 2px white;
+  height: 30px;
+  margin-top: 8px;
+}
+
+h3 {
+  color: whitesmoke;
+}
