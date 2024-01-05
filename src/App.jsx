@@ -4,50 +4,60 @@ import { Content } from "./components/Content";
 import { Day } from "./components/Day";
 import { Menu } from "./components/Menu";
 
+const initialSummaryOfDay = { kcal: 0, fats: 0, carbons: 0, proteins: 0 };
+
 function App() {
-    const [dayMenu, setDayMenu] = useState([
-      {
-        idOfMeal: 10,
-        nameOfMeal: "Nazwa posiłku",
-        imgOfMeal: "/dishes/dish6.PNG",
-        kcal: 100,
-        fats: 10,
-        carbons: 10,
-        proteins: 10,
-      },
-    ]);
+  const [summaryOfDay, setSummaryOfDay] = useState(initialSummaryOfDay);
+  const [arrOfMeals, setArrOfMeals] = useState([]);
+  const [showRecipe, setShowRecipe] = useState(false);
+  const [showMeals, setShowMeals] = useState(true);
 
-    const [summaryOfDay, setSummaryOfDay] = useState(100);
+  function addToDayMenu(
+    newTitle,
+    newImgUrl,
+    newKcal,
+    newFats,
+    newCarbons,
+    newProteins
+  ) {
+    setSummaryOfDay((prevState) => {
+      prevState.kcal += newKcal;
+      prevState.fats += newFats;
+      prevState.carbons += newCarbons;
+      prevState.proteins += newProteins;
+      return { ...prevState };
+    });
 
-    function addToDayMenu() {
-      console.log("Działa");
-      setSummaryOfDay((prevState) => {
-        prevState + 100;
-      });
-    }
+    setArrOfMeals((prevState) => {
+      return [
+        ...prevState,
+        {
+          id: Math.random(),
+          title: newTitle,
+          img: newImgUrl,
+          kcal: newKcal,
+          fats: newFats,
+          carbons: newCarbons,
+          proteins: newProteins,
+        },
+      ];
+    });
+  }
 
-    return (
-      <div className="container">
-        <h1>Skomponuj swój dzień jedzenia!</h1>
-        <Menu></Menu>
-        <Content
-          idOfMeal={dayMenu.idOfMeal}
-          nameOfMeal={dayMenu[0].nameOfMeal}
-          imgUrl={dayMenu[0].imgOfMeal}
-          kcalOfMeal={dayMenu[0].kcal}
-          fats={dayMenu[0].fats}
-          carbons={dayMenu[0].carbons}
-          proteins={dayMenu[0].proteins}
-        ></Content>
-        <Day summaryOfDay={summaryOfDay}></Day>
-        <button onClick={addToDayMenu}> Test</button>
-        <h2>Podsumowanie:</h2>
-        <h3>Wartość energetyncza: {summaryOfDay} kcal</h3>
-        {/*         <h3>Tłuszcze: {summaryOfDay.fats}g.</h3>
-        <h3>Węglowodany: {summaryOfDay.carbons}g.</h3>
-        <h3>Białka: {summaryOfDay.proteins}g.</h3> */}
-      </div>
-    );
+  return (
+    <div className="container">
+      <h1>Skomponuj swój dzień jedzenia!</h1>
+      <Menu></Menu>
+      <Content
+        addToDayMenu={addToDayMenu}
+        showMeals={showMeals}
+        setShowMeals={() => setShowMeals((prevState) => !prevState)}
+        showRecipe={showRecipe}
+        setShowRecipe={() => setShowRecipe((prevState) => !prevState)}
+      ></Content>
+      <Day summaryOfDay={summaryOfDay} arrOfMeals={arrOfMeals}></Day>
+    </div>
+  );
 }
 
 export default App;

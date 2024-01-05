@@ -1,0 +1,12 @@
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  .shortDescription {
+    color: var(--color-font);
+    font-size: 1rem;
+    padding: 20px;
+    width: 90%;
+  }
+}

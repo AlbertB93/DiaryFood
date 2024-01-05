@@ -1,0 +1,18 @@
+.form {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
+}
+
+.input {
+  border: solid 3px var(--color-header);
+  background-color: transparent;
+  color: var(--color-header);
+  width: 200px;
+}
+
+.label {
+  color: var(--color-header);
+  text-align: center;
+}

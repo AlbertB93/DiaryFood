@@ -1,0 +1,75 @@
+.singleRecipe {
+  border: solid 3px var(--color-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 350px;
+  padding: 4px;
+  width: 800px;
+
+  .imgAndIngredients {
+    display: flex;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 25%;
+
+    .imgContainerMeal {
+      display: flex;
+      margin: auto auto;
+      .logoImgMeal {
+        border: solid 2px var(--color-border);
+        border-radius: 8px;
+        margin: auto auto;
+        width: 90%;
+      }
+    }
+
+    .ingredients {
+      color: var(--color-font);
+      /* list-style: none; */
+      margin-left: 20px;
+      padding-bottom: 4px;
+
+      li {
+        font-size: 0.8rem;
+        margin: 1px;
+      }
+    }
+  }
+
+  .content {
+    align-items: center;
+    color: var(--color-font);
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+
+    .titleMeal {
+      color: var(--color-header);
+      font-size: 1.2rem;
+      margin: 8px;
+      text-align: center;
+    }
+    .values {
+      color: var(--color-header);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin: 8px;
+      width: 80%;
+
+      .value {
+        padding: 0 4px;
+      }
+    }
+
+    .howToCook {
+      font-size: 1rem;
+      margin: 8px;
+      text-indent: 20px;
+    }
+  }
+}

@@ -10,16 +10,27 @@
   width: 20vw;
 }
 
+.title {
+  border-bottom: solid 2px white;
+  height: 22px;
+  margin-top: 8px;
+}
+
+h3,
+h4 {
+  color: var(--color-header);
+}
+
 .imgContainer {
   background-color: var(--color-main);
   border: solid 4px silver;
   border-radius: 90px;
   display: flex;
-  height: 150px;
+  height: 120px;
   justify-content: center;
   overflow: hidden;
   margin-top: -60px;
-  width: 150px;
+  width: 120px;
 }
 
 .logoImg {
@@ -27,12 +38,45 @@
   max-height: 110%;
 }
 
-.title {
-  border-bottom: solid 2px white;
-  height: 30px;
-  margin-top: 8px;
-}
+.singleMeal {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 80px;
+  justify-content: space-evenly;
+  margin: 2px;
+  padding: 2px;
+  width: 98%;
 
-h3 {
-  color: whitesmoke;
+  .titleMeal {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    width: auto;
+  }
+
+  .imgContainerMeal {
+    background-color: var(--color-main);
+    border: solid 1px silver;
+    display: flex;
+    height: 70px;
+    justify-content: center;
+    overflow: hidden;
+    width: 70px;
+  }
+
+  .logoImgMeal {
+    margin: auto auto;
+    max-height: 110%;
+  }
+
+  .values {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8rem;
+    justify-content: space-between;
+    margin: 4px;
+    width: 70%;
+  }
 }

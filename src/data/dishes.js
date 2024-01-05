@@ -26,7 +26,7 @@ export const dishes = [
     carbons: 60,
     proteins: 28,
   },
-  /*   {
+  {
     id: 3,
     title: "Tortilla z kurczakiem",
     group: "dinner",
@@ -35,7 +35,7 @@ export const dishes = [
     fats: 10,
     carbons: 36,
     proteins: 20,
-  }, */
+  },
   /*
   {
     id: 4,
