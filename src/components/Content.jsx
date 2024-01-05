@@ -4,6 +4,7 @@ import { dishes } from "../data/dishes.js";
 import { Header } from "./Header.jsx";
 import { SingleRecipe } from "./SingleRecipe.jsx";
 import { useState } from "react";
+import { NewMeal } from "./NewMeal.jsx";
 
 const initialCurrentMeal = {
   name: "",
@@ -20,12 +21,14 @@ export function Content({
   setShowMeals,
   showRecipe,
   setShowRecipe,
+  showHeader,
+  showNewMeal,
 }) {
   const [currentMeal, setCurrentMeal] = useState(initialCurrentMeal);
 
   return (
     <div className={styles.content}>
-      <Header></Header>
+      {showHeader && <Header></Header>}
       {showMeals && (
         <div className={styles.dishes}>
           {dishes.map((dish) => (
@@ -48,6 +51,7 @@ export function Content({
         </div>
       )}
       {showRecipe && <SingleRecipe currentMeal={currentMeal}></SingleRecipe>}
+      {showNewMeal && <NewMeal></NewMeal>}
     </div>
   );
 }

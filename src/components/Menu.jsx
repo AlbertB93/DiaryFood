@@ -1,8 +1,13 @@
 import styles from "../CSS/menu.module.css";
 
-/* import "../CSS/menu.css"; */
+export function Menu({ setShowHeader, setShowMeals, setShowNewMeal }) {
+  function showNewMealComponent(e) {
+    e.preventDefault();
+    setShowHeader();
+    setShowMeals();
+    setShowNewMeal();
+  }
 
-export function Menu() {
   return (
     <div className={styles.menu}>
       <h2 className={styles.title}>Menu</h2>
@@ -14,6 +19,9 @@ export function Menu() {
         <li>Przekąski</li>
         <li>Domowe fastoody</li>
         <li>Kalorie - nieistotne</li>
+        <li>
+          <button onClick={showNewMealComponent}>Skoponuj swój posiłek!</button>
+        </li>
       </ul>
     </div>
   );
