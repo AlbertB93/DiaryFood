@@ -1,12 +1,13 @@
 .content {
   align-items: center;
-  border: solid 3px var(--color-border);
+/*   border: solid 3px var(--color-border); */
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
-  height: 500px;
+  min-height: 500px;
+    height: auto;
   padding: 12px;
   width: 60vw;
 }

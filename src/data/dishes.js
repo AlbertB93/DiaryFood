@@ -15,6 +15,9 @@ export const dishes = [
     fats: 20,
     carbons: 45,
     proteins: 36,
+    ingredients: [
+      "makaron", "mięso mielone wieprzowe", "passata pomidorowa", "cebula", "oliwa z oliwek", "ser parmezan"
+    ]
   },
   {
     id: 2,
@@ -25,6 +28,9 @@ export const dishes = [
     fats: 32,
     carbons: 60,
     proteins: 28,
+    ingredients: [
+      "makaron", "mięso mielone wieprzowe", "passata pomidorowa", "cebula", "oliwa z oliwek", "ser parmezan"
+    ]
   },
   {
     id: 3,
@@ -35,6 +41,9 @@ export const dishes = [
     fats: 10,
     carbons: 36,
     proteins: 20,
+    ingredients: [
+      "makaron", "mięso mielone wieprzowe", "passata pomidorowa", "cebula", "oliwa z oliwek", "ser parmezan"
+    ]
   },
   /*
   {

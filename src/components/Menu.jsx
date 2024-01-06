@@ -8,11 +8,18 @@ export function Menu({ setShowHeader, setShowMeals, setShowNewMeal }) {
     setShowNewMeal();
   }
 
+  function showHomePage(e) {
+    e.preventDefault();
+    setShowHeader();
+    setShowMeals();
+    setShowNewMeal();
+  }
+
   return (
     <div className={styles.menu}>
       <h2 className={styles.title}>Menu</h2>
       <ul className={styles.list}>
-        <li>Strona główna</li>
+        <button onClick={showHomePage}>Strona główna</button>
         <li>Śniadania</li>
         <li>Obiady</li>
         <li>Kolacje</li>

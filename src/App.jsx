@@ -10,9 +10,19 @@ function App() {
   const [summaryOfDay, setSummaryOfDay] = useState(initialSummaryOfDay);
   const [arrOfMeals, setArrOfMeals] = useState([]);
   const [showRecipe, setShowRecipe] = useState(false);
-  const [showMeals, setShowMeals] = useState(true);
-  const [showHeader, setShowHeader] = useState(true);
-  const [showNewMeal, setShowNewMeal] = useState(false);
+  const [showMeals, setShowMeals] = useState(false);
+  const [showHeader, setShowHeader] = useState(false);
+  const [showNewMeal, setShowNewMeal] = useState(true);
+
+  /* New Meal */
+  const [valuesOfMeal, setValuesOfMeal] = useState({
+    kcal: 0,
+    fats: 0,
+    carbons: 0,
+    proteins: 0,
+  });
+
+  /*--------------------------*/
 
   function addToDayMenu(
     newTitle,
@@ -62,6 +72,8 @@ function App() {
         setShowRecipe={() => setShowRecipe((prevState) => !prevState)}
         showHeader={showHeader}
         showNewMeal={showNewMeal}
+        valuesOfMeal={valuesOfMeal}
+        setValuesOfMeal={setValuesOfMeal}
       ></Content>
       <Day summaryOfDay={summaryOfDay} arrOfMeals={arrOfMeals}></Day>
     </div>

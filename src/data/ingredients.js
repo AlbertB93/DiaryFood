@@ -1,0 +1,66 @@
+import grahamka from "/ingredients/grahamka.PNG?url";
+import kajzerka from "/ingredients/kajzerka.PNG?url";
+import pszennoZytnia from "/ingredients/pszennoZytnia.PNG?url";
+
+export const ingredients = [
+    {
+        id: 1,
+        name: "bułka grahamka",
+        group: "pieczywo",
+        image: grahamka,
+        kcal: 100,
+        fats: 10,
+        carbons: 20,
+        proteins: 30,
+    },
+    {
+        id: 2,
+        name: " bułka kajzerka",
+        group: "pieczywo",
+        image: kajzerka,
+        kcal: 120,
+        fats: 20,
+        carbons: 22,
+        proteins: 33,
+    },
+    {
+        id: 3,
+        name: " bułka pszenno-żytnia",
+        group: "pieczywo",
+        image: pszennoZytnia,
+        kcal: 111,
+        fats: 11,
+        carbons: 14,
+        proteins: 8,
+    },
+    {
+        id: 4,
+        name: "bułka grahamka",
+        group: "pieczywo",
+        image: grahamka,
+        kcal: 100,
+        fats: 10,
+        carbons: 20,
+        proteins: 30,
+    },
+    {
+        id: 5,
+        name: " bułka kajzerka",
+        group: "pieczywo",
+        image: kajzerka,
+        kcal: 120,
+        fats: 20,
+        carbons: 22,
+        proteins: 33,
+    },
+    {
+        id: 6,
+        name: " bułka pszenno-żytnia",
+        group: "pieczywo",
+        image: pszennoZytnia,
+        kcal: 111,
+        fats: 11,
+        carbons: 14,
+        proteins: 8,
+    },
+]

@@ -13,6 +13,7 @@ const initialCurrentMeal = {
   fats: 0,
   carbons: 0,
   proteins: 0,
+  ingredients: [],
 };
 
 export function Content({
@@ -23,6 +24,8 @@ export function Content({
   setShowRecipe,
   showHeader,
   showNewMeal,
+  valuesOfMeal,
+  setValuesOfMeal,
 }) {
   const [currentMeal, setCurrentMeal] = useState(initialCurrentMeal);
 
@@ -41,6 +44,7 @@ export function Content({
               fats={dish.fats}
               carbons={dish.carbons}
               proteins={dish.proteins}
+              ingredients={dish.ingredients}
               addToDayMenu={addToDayMenu}
               showMeals={showMeals}
               setShowMeals={setShowMeals}
@@ -50,8 +54,19 @@ export function Content({
           ))}
         </div>
       )}
-      {showRecipe && <SingleRecipe currentMeal={currentMeal}></SingleRecipe>}
-      {showNewMeal && <NewMeal></NewMeal>}
+      {showRecipe && (
+        <SingleRecipe
+          currentMeal={currentMeal}
+          setShowMeals={setShowMeals}
+          setShowRecipe={setShowRecipe}
+        ></SingleRecipe>
+      )}
+      {showNewMeal && (
+        <NewMeal
+          valuesOfMeal={valuesOfMeal}
+          setValuesOfMeal={setValuesOfMeal}
+        ></NewMeal>
+      )}
     </div>
   );
 }

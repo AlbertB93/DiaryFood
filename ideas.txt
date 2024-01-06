@@ -1,0 +1,13 @@
+1. Zrobić może drugą bazę danych dla składników na potrawy, w kolejności dokładniej takiej jak potrawy np.
+
+const ingredients = [
+    {id:1,
+    pasta: 160,
+    passata: 400,
+    chesseParmezan: 40,
+    mincedPork: 400,
+    }
+]
+
+2. Wyświetlanie składników w SingleRecipe. Pokazują się w SmallRecipe jednak nie chce ich przekazać dalej.
+

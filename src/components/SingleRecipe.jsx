@@ -1,6 +1,12 @@
 import styles from "./../CSS/singleRecipe.module.css";
 
-export function SingleRecipe({ currentMeal }) {
+export function SingleRecipe({ currentMeal, setShowMeals, setShowRecipe }) {
+  function eventHandleCloseRecipe(e) {
+    e.preventDefault();
+    setShowMeals();
+    setShowRecipe();
+  }
+
   return (
     <div className={styles.singleRecipe}>
       <div className={styles.imgAndIngredients}>
@@ -13,6 +19,9 @@ export function SingleRecipe({ currentMeal }) {
         </div>
         <ul className={styles.ingredients}>
           Składniki:
+          {/*           {currentMeal.ingredients.map((ingredient) => (
+            <li key={currentMeal.id}>{ingredient}</li>
+          ))} */}
           <li>Makaron 60g.</li>
           <li>Jajka 40g.</li>
           <li>Ser 30g.</li>
@@ -23,7 +32,13 @@ export function SingleRecipe({ currentMeal }) {
         </ul>
       </div>
       <div className={styles.content}>
-        <p className={styles.titleMeal}>{currentMeal.name}</p>
+        <p className={styles.titleMeal}>
+          <p className={styles.title}> {currentMeal.name}</p>
+          <button className={styles.btn} onClick={eventHandleCloseRecipe}>
+            X
+          </button>
+        </p>
+
         <div className={styles.values}>
           Wartości odżywcze:
           <p className={styles.value}> {currentMeal.kcal} kcal</p>
