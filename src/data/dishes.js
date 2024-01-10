@@ -1,7 +1,8 @@
 import dish1 from "/dishes/dish1.PNG?url";
 import dish2 from "/dishes/dish2.PNG?url";
 import dish3 from "/dishes/dish3.PNG?url";
-/* import dish4 from "../images/dish4.png";
+import dish4 from "/dishes/dish4.png?url";
+/*
 import dish5 from "../images/dish5.PNG";
 import dish6 from "../images/dish6.PNG"; */
 
@@ -16,8 +17,13 @@ export const dishes = [
     carbons: 45,
     proteins: 36,
     ingredients: [
-      "makaron", "mięso mielone wieprzowe", "passata pomidorowa", "cebula", "oliwa z oliwek", "ser parmezan"
-    ]
+      "makaron",
+      "mięso mielone wieprzowe",
+      "passata pomidorowa",
+      "cebula",
+      "oliwa z oliwek",
+      "ser parmezan",
+    ],
   },
   {
     id: 2,
@@ -29,8 +35,13 @@ export const dishes = [
     carbons: 60,
     proteins: 28,
     ingredients: [
-      "makaron", "mięso mielone wieprzowe", "passata pomidorowa", "cebula", "oliwa z oliwek", "ser parmezan"
-    ]
+      "makaron",
+      "mięso mielone wieprzowe",
+      "passata pomidorowa",
+      "cebula",
+      "oliwa z oliwek",
+      "ser parmezan",
+    ],
   },
   {
     id: 3,
@@ -42,10 +53,15 @@ export const dishes = [
     carbons: 36,
     proteins: 20,
     ingredients: [
-      "makaron", "mięso mielone wieprzowe", "passata pomidorowa", "cebula", "oliwa z oliwek", "ser parmezan"
-    ]
+      "makaron",
+      "mięso mielone wieprzowe",
+      "passata pomidorowa",
+      "cebula",
+      "oliwa z oliwek",
+      "ser parmezan",
+    ],
   },
-  /*
+
   {
     id: 4,
     title: "Schab w sosie musztardowym",
@@ -56,6 +72,7 @@ export const dishes = [
     carbons: 70,
     proteins: 25,
   },
+  /*
   {
     id: 5,
     title: "Deser a'la szarlotka",

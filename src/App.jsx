@@ -2,16 +2,15 @@ import { useState } from "react";
 import "./App.css";
 import { Content } from "./components/Content";
 import { Day } from "./components/Day";
-import { Menu } from "./components/Menu";
 
 const initialSummaryOfDay = { kcal: 0, fats: 0, carbons: 0, proteins: 0 };
 
 function App() {
   const [summaryOfDay, setSummaryOfDay] = useState(initialSummaryOfDay);
   const [arrOfMeals, setArrOfMeals] = useState([]);
+
   const [showRecipe, setShowRecipe] = useState(false);
   const [showMeals, setShowMeals] = useState(false);
-  const [showHeader, setShowHeader] = useState(false);
   const [showNewMeal, setShowNewMeal] = useState(true);
 
   /* New Meal */
@@ -56,24 +55,34 @@ function App() {
     });
   }
 
+  function showNewMealComponent(e) {
+    e.preventDefault();
+    setShowMeals((prevState) => !prevState);
+    setShowNewMeal((prevState) => !prevState);
+  }
+
+  function showHomePage(e) {
+    e.preventDefault();
+    setShowMeals((prevState) => !prevState);
+    setShowNewMeal((prevState) => !prevState);
+  }
+
   return (
     <div className="container">
       <h1>Skomponuj swój dzień jedzenia!</h1>
-      <Menu
-        setShowHeader={() => setShowHeader((prevState) => !prevState)}
-        setShowMeals={() => setShowMeals((prevState) => !prevState)}
-        setShowNewMeal={() => setShowNewMeal((prevState) => !prevState)}
-      ></Menu>
       <Content
         addToDayMenu={addToDayMenu}
         showMeals={showMeals}
         setShowMeals={() => setShowMeals((prevState) => !prevState)}
         showRecipe={showRecipe}
         setShowRecipe={() => setShowRecipe((prevState) => !prevState)}
-        showHeader={showHeader}
         showNewMeal={showNewMeal}
+        showNewMealComponent={showNewMealComponent}
+        showHomePage={showHomePage}
         valuesOfMeal={valuesOfMeal}
         setValuesOfMeal={setValuesOfMeal}
+        /*         listOfIngredient={listOfIngredient}
+        setListOfIngredient={setListOfIngredient} */
       ></Content>
       <Day summaryOfDay={summaryOfDay} arrOfMeals={arrOfMeals}></Day>
     </div>

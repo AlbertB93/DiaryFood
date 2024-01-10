@@ -11,3 +11,4 @@ const ingredients = [
 
 2. Wyświetlanie składników w SingleRecipe. Pokazują się w SmallRecipe jednak nie chce ich przekazać dalej.
 
+        <div {(showIngredientsBox)? className=`${styles.ingredientsBox}` :  className={`${styles.ingredientsBox} ${styles.onBlur}`}}>

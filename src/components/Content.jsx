@@ -22,16 +22,23 @@ export function Content({
   setShowMeals,
   showRecipe,
   setShowRecipe,
-  showHeader,
   showNewMeal,
+  showNewMealComponent,
+  showHomePage,
   valuesOfMeal,
   setValuesOfMeal,
+  /*   listOfIngredients,
+  setListOfIngredient */
 }) {
   const [currentMeal, setCurrentMeal] = useState(initialCurrentMeal);
 
   return (
     <div className={styles.content}>
-      {showHeader && <Header></Header>}
+      <Header
+        showNewMealComponent={showNewMealComponent}
+        showHomePage={showHomePage}
+        showMeals={showMeals}
+      ></Header>
       {showMeals && (
         <div className={styles.dishes}>
           {dishes.map((dish) => (

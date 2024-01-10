@@ -1,0 +1,73 @@
+.IngredientWeight {
+  background-color: var(--color-main);
+  border: solid 3px var(--color-header);
+  border-radius: 8px;
+  color: black;
+  height: 250px;
+  margin-top: 100px;
+  position: absolute;
+  width: 250px;
+
+  .singleIngredient {
+    align-items: center;
+    color: var(--color-header);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 160px;
+    justify-content: space-evenly;
+    margin: 2px;
+    padding: 2px;
+    width: 98%;
+
+    .titleMeal {
+      font-size: 1.2rem;
+      text-align: center;
+      width: auto;
+    }
+
+    .imgContainerMeal {
+      border: solid 1px silver;
+      display: flex;
+      height: 70px;
+      justify-content: center;
+      overflow: hidden;
+      width: 70px;
+    }
+
+    .logoImgMeal {
+      margin: auto auto;
+      max-height: 110%;
+    }
+
+    .values {
+      display: flex;
+      flex-direction: row;
+      font-size: 0.7rem;
+      justify-content: space-between;
+      margin: 4px;
+      width: 70%;
+    }
+  }
+}
+
+.singleBtn {
+  color: var(--color-header);
+  display: flex;
+  justify-content: space-around;
+  margin: 6px;
+
+  .input {
+    color: var(--color-header);
+    width: 30%;
+  }
+
+  .addBtn {
+    background: transparent;
+    border: solid 1px var(--color-header);
+    color: var(--color-font);
+    cursor: pointer;
+    font-size: 0.6rem;
+    padding: 4px;
+  }
+}
