@@ -61,8 +61,7 @@ function App() {
     setShowNewMeal((prevState) => !prevState);
   }
 
-  function showHomePage(e) {
-    e.preventDefault();
+  function showHomePage() {
     setShowMeals((prevState) => !prevState);
     setShowNewMeal((prevState) => !prevState);
   }

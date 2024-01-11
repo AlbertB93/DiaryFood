@@ -1,6 +1,16 @@
-import grahamka from "/ingredients/grahamka.PNG?url";
-import kajzerka from "/ingredients/kajzerka.PNG?url";
-import pszennoZytnia from "/ingredients/pszennoZytnia.PNG?url";
+import grahamka from "/ingredients/breads/grahamka.PNG?url";
+import kajzerka from "/ingredients/breads/kajzerka.PNG?url";
+import pszennoZytnia from "/ingredients/breads/pszennoZytnia.PNG?url";
+import banan from "/ingredients/fruits/banan.png?url";
+import gruszka from "/ingredients/fruits/gruszka.png?url";
+import jablko from "/ingredients/fruits/jabłko.png?url";
+import filetKurczak from "/ingredients/meat/filetKurczak.png?url";
+import mieloneIndyk from "/ingredients/meat/mieloneIndyk.png?url";
+import poledwicaSopocka from "/ingredients/meat/poledwicaSopocka.png?url";
+import schabWieprzowy from "/ingredients/meat/schabWieprzowy.png?url";
+import papryka from "/ingredients/vegetables/papryka.png?url";
+import pomidor from "/ingredients/vegetables/pomidor.png?url";
+import ogorekZielony from "/ingredients/vegetables/ogorekZielony.png?url";
 
 export const ingredients = [
   {
@@ -38,9 +48,9 @@ export const ingredients = [
   },
   {
     id: 4,
-    name: "bułka grahamka",
-    group: "pieczywo",
-    image: grahamka,
+    name: "banan",
+    group: "owoce",
+    image: banan,
     kcal: 100,
     fats: 10,
     carbons: 20,
@@ -49,9 +59,9 @@ export const ingredients = [
   },
   {
     id: 5,
-    name: " bułka kajzerka",
-    group: "pieczywo",
-    image: kajzerka,
+    name: " gruszka",
+    group: "owoce",
+    image: gruszka,
     kcal: 120,
     fats: 20,
     carbons: 22,
@@ -60,13 +70,90 @@ export const ingredients = [
   },
   {
     id: 6,
-    name: " bułka pszenno-żytnia",
-    group: "pieczywo",
-    image: pszennoZytnia,
+    name: "jabłko",
+    group: "owoce",
+    image: jablko,
     kcal: 111,
     fats: 11,
     carbons: 14,
     proteins: 8,
     weight: 100,
   },
+  {
+    id: 7,
+    name: "filet z kurczaka",
+    group: "mieso",
+    image: filetKurczak,
+    kcal: 111,
+    fats: 11,
+    carbons: 14,
+    proteins: 8,
+    weight: 100,
+  },
+  {
+    id: 8,
+    name: "mięso mielone z indyka",
+    group: "mieso",
+    image: mieloneIndyk,
+    kcal: 111,
+    fats: 11,
+    carbons: 14,
+    proteins: 8,
+    weight: 100,
+  },
+  {
+    id: 9,
+    name: "polędwica sopocka",
+    group: "mieso",
+    image: poledwicaSopocka,
+    kcal: 111,
+    fats: 11,
+    carbons: 14,
+    proteins: 8,
+    weight: 100,
+  },
+  {
+    id: 10,
+    name: "schab wieprzowy",
+    group: "mieso",
+    image: schabWieprzowy,
+    kcal: 111,
+    fats: 11,
+    carbons: 14,
+    proteins: 8,
+    weight: 100,
+  },
+  {
+    id: 11,
+    name: "papryka",
+    group: "warzywa",
+    image: papryka,
+    kcal: 30,
+    fats: 2,
+    carbons: 25,
+    proteins: 2,
+    weight: 100,
+  },
+  {
+    id: 12,
+    name: "pomidor",
+    group: "warzywa",
+    image: pomidor,
+    kcal: 40,
+    fats: 4,
+    carbons: 20,
+    proteins: 3,
+    weight: 100,
+  },
+  /*   {
+    id: 13,
+    name: "ogorekZielony",
+    group: "warzywa",
+    image: ogorekZielony,
+    kcal: 40,
+    fats: 4,
+    carbons: 20,
+    proteins: 3,
+    weight: 100,
+  }, */
 ];

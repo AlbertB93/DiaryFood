@@ -72,6 +72,8 @@ export function Content({
         <NewMeal
           valuesOfMeal={valuesOfMeal}
           setValuesOfMeal={setValuesOfMeal}
+          showHomePage={showHomePage}
+          addToDayMenu={addToDayMenu}
         ></NewMeal>
       )}
     </div>

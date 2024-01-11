@@ -2,8 +2,14 @@ import { useState } from "react";
 import styles from "./../CSS/newMeal.module.css";
 import { ingredients } from "./../data/ingredients.js";
 import { IngredientWeight } from "./IngredientWeight.jsx";
+import { Select } from "./Select.jsx";
 
-export function NewMeal({ valuesOfMeal, setValuesOfMeal, showHomePage }) {
+export function NewMeal({
+  valuesOfMeal,
+  setValuesOfMeal,
+  showHomePage,
+  addToDayMenu,
+}) {
   const [showIngredientsBox, setShowIngredientsBox] = useState(true);
   const [activeIngredient, setActiveIngredient] = useState({
     name: "",
@@ -25,10 +31,16 @@ export function NewMeal({ valuesOfMeal, setValuesOfMeal, showHomePage }) {
     weight
   ) {
     setValuesOfMeal((prevState) => {
-      prevState.kcal += kcal;
-      prevState.fats += fats;
-      prevState.carbons += carbons;
-      prevState.proteins += proteins;
+      (prevState.kcal += Math.round(kcal * ((numberOfPieces * weight) / 100))),
+        (prevState.fats += Math.round(
+          fats * ((numberOfPieces * weight) / 100)
+        )),
+        (prevState.carbons += Math.round(
+          carbons * ((numberOfPieces * weight) / 100)
+        )),
+        (prevState.proteins += Math.round(
+          proteins * ((numberOfPieces * weight) / 100)
+        ));
       return { ...prevState };
     });
     setListOfIngredient((prevState) => {
@@ -37,11 +49,11 @@ export function NewMeal({ valuesOfMeal, setValuesOfMeal, showHomePage }) {
         {
           title: name,
           img: img,
-          kcal: kcal * ((numberOfPieces * weight) / 100),
-          fats: fats * ((numberOfPieces * weight) / 100),
-          carbons: carbons * ((numberOfPieces * weight) / 100),
-          proteins: proteins * ((numberOfPieces * weight) / 100),
-          weight: numberOfPieces * weight,
+          kcal: Math.round(kcal * ((numberOfPieces * weight) / 100)),
+          fats: Math.round(fats * ((numberOfPieces * weight) / 100)),
+          carbons: Math.round(carbons * ((numberOfPieces * weight) / 100)),
+          proteins: Math.round(proteins * ((numberOfPieces * weight) / 100)),
+          weight: Math.round(numberOfPieces * weight),
         },
       ];
     });
@@ -61,21 +73,46 @@ export function NewMeal({ valuesOfMeal, setValuesOfMeal, showHomePage }) {
     setActiveIngredient({ name, img, kcal, fats, carbons, proteins, weight });
   }
 
+  function handleHomePage() {
+    showHomePage();
+  }
+
+  function handleAddToDay(kcal, fats, carbons, proteins) {
+    const imgUrl = "./felek.png";
+    addToDayMenu("Moja kompozycja", imgUrl, kcal, fats, carbons, proteins);
+  }
+
   const [listOfIngredient, setListOfIngredient] = useState([]);
   const [numberOfGrams, setNumberOfGrams] = useState();
   const [numberOfPieces, setNumberOfPieces] = useState();
 
+  /* Filtry*/
+
+  const [filter, setFilter] = useState("Wszystkie");
+  const filteredIngredients =
+    filter === "Wszystkie"
+      ? ingredients
+      : ingredients.filter((ingredient) => ingredient.group === filter);
+
   return (
     <div className={styles.newMeal}>
+      {!showIngredientsBox && (
+        <IngredientWeight
+          activeIngredient={activeIngredient}
+          eventHandlerSetValuesOfMeal={eventHandlerSetValuesOfMeal}
+          setNumberOfPieces={setNumberOfPieces}
+        />
+      )}
+      {/*       <span className={styles.title}>
+        Wybierz składniki do dania, które chcesz stworzyć, a następnie dodaj
+        posiłek do jadłospisu!
+      </span> */}
       <div className={styles.selectBox}>
-        <label htmlFor="ingredients">Wybierz grupę składników </label>
-        <select name="ingredients" id="ingredients" className={styles.select}>
-          <option value="default"> Pieczywo</option>
-          <option>Mięso</option>
-          <option>Wędliny</option>
-          <option>Smarowidła</option>
-          <option>Warzywa</option>
-        </select>
+        <Select filter={filter} setFilter={setFilter}></Select>
+        <Select filter={filter} setFilter={setFilter}></Select>
+        <button onClick={handleHomePage} className={styles.btn}>
+          Strona główna
+        </button>
       </div>
       <div className={styles.newMealComposition}>
         <p className={styles.titleNewMeal}>Twój stworzony posiłek:</p>
@@ -103,57 +140,62 @@ export function NewMeal({ valuesOfMeal, setValuesOfMeal, showHomePage }) {
         <h5>Tłuszcze: {valuesOfMeal.fats} g.</h5>
         <h5>Węglowodany: {valuesOfMeal.carbons} g.</h5>
         <h5>Białka: {valuesOfMeal.proteins} g.</h5>
+        <button
+          className={styles.btn}
+          onClick={() =>
+            handleAddToDay(
+              valuesOfMeal.kcal,
+              valuesOfMeal.fats,
+              valuesOfMeal.carbons,
+              valuesOfMeal.proteins
+            )
+          }
+        >
+          Dodaj posiłek do jadłospisu!
+        </button>
       </div>
-
-      {showIngredientsBox ? (
-        <div className={`${styles.ingredientsBox} ${styles.onBlur}`}>
-          {ingredients.map((ingredient) => (
-            <div key={ingredient.id} className={styles.ingredient}>
-              <p className={styles.ingredientName}>{ingredient.name}</p>
-              <img
-                src={ingredient.image}
-                alt="FOTKA"
-                className={styles.imgContainer}
-              />
-              <div className={styles.ingredientValues}>
-                <p>{ingredient.kcal} kcal. </p>
-                <p>T: {ingredient.fats}g. </p>
-                <p>W: {ingredient.carbons}g.</p>
-                <p>B: {ingredient.proteins} g.</p>
-              </div>
-              <p className={styles.ingredientName}>
-                1 szt. = {ingredient.weight}g.
-              </p>
-              <div className={styles.buttons}>
-                <button
-                  className={styles.btn}
-                  onClick={() =>
-                    handleActiveIngredient(
-                      ingredient.name,
-                      ingredient.image,
-                      ingredient.kcal,
-                      ingredient.fats,
-                      ingredient.carbons,
-                      ingredient.proteins,
-                      ingredient.weight
-                    )
-                  }
-                >
-                  Dodaj!
-                </button>
-              </div>
+      <div
+        className={
+          showIngredientsBox
+            ? `${styles.ingredientsBox}`
+            : `${styles.ingredientsBox} ${styles.onBlur}`
+        }
+      >
+        {filteredIngredients.map((ingredient) => (
+          <div key={ingredient.id} className={styles.ingredient}>
+            <p className={styles.ingredientName}>{ingredient.name}</p>
+            <img
+              src={ingredient.image}
+              alt="FOTKA"
+              className={styles.imgContainer}
+            />
+            <div className={styles.ingredientValues}>
+              <p>{ingredient.kcal} kcal. </p>
+              <p>T: {ingredient.fats}g. </p>
+              <p>W: {ingredient.carbons}g.</p>
+              <p>B: {ingredient.proteins} g.</p>
             </div>
-          ))}
-        </div>
-      ) : (
-        <div className={styles.ingredientsBox}>
-          <IngredientWeight
-            activeIngredient={activeIngredient}
-            eventHandlerSetValuesOfMeal={eventHandlerSetValuesOfMeal}
-            setNumberOfPieces={setNumberOfPieces}
-          />
-        </div>
-      )}
+            <div className={styles.buttons}>
+              <button
+                className={styles.btn}
+                onClick={() =>
+                  handleActiveIngredient(
+                    ingredient.name,
+                    ingredient.image,
+                    ingredient.kcal,
+                    ingredient.fats,
+                    ingredient.carbons,
+                    ingredient.proteins,
+                    ingredient.weight
+                  )
+                }
+              >
+                Dodaj!
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
