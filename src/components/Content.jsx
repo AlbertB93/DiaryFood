@@ -34,11 +34,13 @@ export function Content({
 
   return (
     <div className={styles.content}>
-      <Header
-        showNewMealComponent={showNewMealComponent}
-        showHomePage={showHomePage}
-        showMeals={showMeals}
-      ></Header>
+      {showMeals && (
+        <Header
+          showNewMealComponent={showNewMealComponent}
+          showHomePage={showHomePage}
+          showMeals={showMeals}
+        ></Header>
+      )}
       {showMeals && (
         <div className={styles.dishes}>
           {dishes.map((dish) => (

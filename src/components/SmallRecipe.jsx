@@ -1,4 +1,5 @@
 import styles from "../CSS/smallRecipe.module.css";
+import { ButtonSmall } from "./ButtonSmall/ButtonSmall";
 
 export function SmallRecipe({
   title,
@@ -42,14 +43,15 @@ export function SmallRecipe({
       <p className={styles.values}>
         {kcal} kcal. T: {fats}g. W: {carbons}g. B: {proteins} g.
       </p>
-      {/*       <p className={styles.values}>{ingredients}</p> */}
       <div className={styles.buttons}>
-        <button className={styles.btn} onClick={eventHandleShowRecipe}>
+        {/*         <button className={styles.btn} onClick={eventHandleShowRecipe}>
           Pokaż przepis
-        </button>
-        <button className={styles.btn} onClick={addToDailyMenu}>
+        </button> */}
+        <ButtonSmall onClick={eventHandleShowRecipe}>Pokaż przepis</ButtonSmall>
+        <ButtonSmall onClick={addToDailyMenu}>Dodaj</ButtonSmall>
+        {/*         <button className={styles.btn} onClick={addToDailyMenu}>
           Dodaj{" "}
-        </button>
+        </button> */}
       </div>
     </div>
   );

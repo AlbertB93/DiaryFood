@@ -2,7 +2,10 @@ import { useState } from "react";
 import styles from "./../CSS/newMeal.module.css";
 import { ingredients } from "./../data/ingredients.js";
 import { IngredientWeight } from "./IngredientWeight.jsx";
-import { Select } from "./Select.jsx";
+import { Select } from "./Select/Select.jsx";
+import { Button } from "./Button/Button.jsx";
+import { Form } from "./Form/Form.jsx";
+import { ButtonSmall } from "./ButtonSmall/ButtonSmall.jsx";
 
 export function NewMeal({
   valuesOfMeal,
@@ -94,6 +97,7 @@ export function NewMeal({
       ? ingredients
       : ingredients.filter((ingredient) => ingredient.group === filter);
 
+  const [inputValue, setInputValue] = useState("");
   return (
     <div className={styles.newMeal}>
       {!showIngredientsBox && (
@@ -103,45 +107,32 @@ export function NewMeal({
           setNumberOfPieces={setNumberOfPieces}
         />
       )}
-      {/*       <span className={styles.title}>
-        Wybierz składniki do dania, które chcesz stworzyć, a następnie dodaj
-        posiłek do jadłospisu!
-      </span> */}
-      <div className={styles.selectBox}>
-        <Select filter={filter} setFilter={setFilter}></Select>
-        <Select filter={filter} setFilter={setFilter}></Select>
-        <button onClick={handleHomePage} className={styles.btn}>
-          Strona główna
-        </button>
-      </div>
+
       <div className={styles.newMealComposition}>
         <p className={styles.titleNewMeal}>Twój stworzony posiłek:</p>
-        {listOfIngredient.map((meal) => (
-          <div key={meal.id} className={styles.singleIngredient}>
-            <div className={styles.imgContainerMeal}>
-              <img
-                src={meal.img}
-                alt="Zdjęcie"
-                className={styles.logoImgMeal}
-              />
+        {listOfIngredient.map(
+          ({ id, img, title, weight, kcal, fats, carbons, proteins }) => (
+            <div key={Math.random()} className={styles.singleIngredient}>
+              <div className={styles.imgContainerMeal}>
+                <img src={img} alt="Zdjęcie" className={styles.logoImgMeal} />
+              </div>
+              <p className={styles.titleMeal}>{title}</p>
+              <p className={styles.value}>{weight} g.</p>
+              <div className={styles.values}>
+                <p className={styles.value}>kcal:{kcal}</p>
+                <p className={styles.value}>T:{fats}g.</p>
+                <p className={styles.value}>W:{carbons}g.</p>
+                <p className={styles.value}>B:{proteins} g.</p>
+              </div>
             </div>
-            <p className={styles.titleMeal}>{meal.title}</p>
-            <p className={styles.value}>{meal.weight} g.</p>
-            <div className={styles.values}>
-              <p className={styles.value}>kcal:{meal.kcal}</p>
-              <p className={styles.value}>T:{meal.fats}g.</p>
-              <p className={styles.value}>W:{meal.carbons}g.</p>
-              <p className={styles.value}>B:{meal.proteins} g.</p>
-            </div>
-          </div>
-        ))}
+          )
+        )}
         <h4 className={styles.titleNewMeal}>Podsumowanie:</h4>
         <h5>Wartość energetyncza: {valuesOfMeal.kcal} kcal</h5>
         <h5>Tłuszcze: {valuesOfMeal.fats} g.</h5>
         <h5>Węglowodany: {valuesOfMeal.carbons} g.</h5>
         <h5>Białka: {valuesOfMeal.proteins} g.</h5>
-        <button
-          className={styles.btn}
+        <ButtonSmall
           onClick={() =>
             handleAddToDay(
               valuesOfMeal.kcal,
@@ -152,49 +143,61 @@ export function NewMeal({
           }
         >
           Dodaj posiłek do jadłospisu!
-        </button>
+        </ButtonSmall>
       </div>
       <div
         className={
           showIngredientsBox
-            ? `${styles.ingredientsBox}`
-            : `${styles.ingredientsBox} ${styles.onBlur}`
+            ? `${styles.ingredientsContent}`
+            : `${styles.ingredientsContent} ${styles.onBlur}`
         }
       >
-        {filteredIngredients.map((ingredient) => (
-          <div key={ingredient.id} className={styles.ingredient}>
-            <p className={styles.ingredientName}>{ingredient.name}</p>
-            <img
-              src={ingredient.image}
-              alt="FOTKA"
-              className={styles.imgContainer}
-            />
-            <div className={styles.ingredientValues}>
-              <p>{ingredient.kcal} kcal. </p>
-              <p>T: {ingredient.fats}g. </p>
-              <p>W: {ingredient.carbons}g.</p>
-              <p>B: {ingredient.proteins} g.</p>
-            </div>
-            <div className={styles.buttons}>
-              <button
-                className={styles.btn}
-                onClick={() =>
-                  handleActiveIngredient(
-                    ingredient.name,
-                    ingredient.image,
-                    ingredient.kcal,
-                    ingredient.fats,
-                    ingredient.carbons,
-                    ingredient.proteins,
-                    ingredient.weight
-                  )
-                }
-              >
-                Dodaj!
-              </button>
-            </div>
-          </div>
-        ))}
+        <div className={styles.selectBox}>
+          <Select filter={filter} setFilter={setFilter}></Select>
+          <Form inputValue={inputValue} setInputValue={setInputValue}>
+            Wyszukaj składnik:{" "}
+          </Form>
+          <Button onClick={handleHomePage}>Strona główna </Button>
+        </div>
+        <div className={styles.ingredientsBox}>
+          {filteredIngredients
+            .filter((ingredient) => ingredient.name.includes(inputValue))
+            .map(
+              ({ id, name, image, kcal, fats, carbons, proteins, weight }) => (
+                <div key={id} className={styles.ingredient}>
+                  <div className={styles.ingredientHeader}>
+                    <p className={styles.ingredientName}>{name}</p>
+                    <ButtonSmall
+                      onClick={() =>
+                        handleActiveIngredient(
+                          name,
+                          image,
+                          kcal,
+                          fats,
+                          carbons,
+                          proteins,
+                          weight
+                        )
+                      }
+                    >
+                      +
+                    </ButtonSmall>
+                  </div>
+                  <img
+                    src={image}
+                    alt="FOTKA"
+                    className={styles.imgContainer}
+                  />
+                  <div className={styles.ingredientValues}>
+                    <p>{kcal} kcal. </p>
+                    <p>T: {fats}g. </p>
+                    <p>W: {carbons}g.</p>
+                    <p>B: {proteins} g.</p>
+                  </div>
+                </div>
+              )
+            )}
+        </div>
       </div>
     </div>
   );

@@ -2,14 +2,15 @@
   align-items: center;
   display: flex;
   justify-content: space-around;
-  width: 400px;
+  padding: 0 20px;
+  width: 380px;
 }
 
 .input {
   border: solid 3px var(--color-header);
   background-color: transparent;
   color: var(--color-header);
-  width: 200px;
+  width: 150px;
 }
 
 .label {

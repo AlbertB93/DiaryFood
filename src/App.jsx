@@ -10,8 +10,8 @@ function App() {
   const [arrOfMeals, setArrOfMeals] = useState([]);
 
   const [showRecipe, setShowRecipe] = useState(false);
-  const [showMeals, setShowMeals] = useState(false);
-  const [showNewMeal, setShowNewMeal] = useState(true);
+  const [showMeals, setShowMeals] = useState(true);
+  const [showNewMeal, setShowNewMeal] = useState(false);
 
   /* New Meal */
   const [valuesOfMeal, setValuesOfMeal] = useState({

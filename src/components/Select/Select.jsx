@@ -1,9 +1,11 @@
-import styles from "./../CSS/select.module.css";
+import styles from "./select.module.css";
 
 export function Select({ filter, setFilter }) {
   return (
-    <>
-      <label htmlFor="ingredients">Wybierz grupę składników </label>
+    <div className={styles.selectContainer}>
+      <label htmlFor="ingredients" className={styles.label}>
+        Wybierz grupę składników:
+      </label>
       <select
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
@@ -15,6 +17,6 @@ export function Select({ filter, setFilter }) {
         <option value="owoce">Owoce</option>
         <option value="warzywa">Warzywa</option>
       </select>
-    </>
+    </div>
   );
 }

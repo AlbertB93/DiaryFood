@@ -1,10 +1,21 @@
+.ingredientsBox::-webkit-scrollbar {
+  background-color: rgb(52, 50, 50);
+  border-radius: 12px;
+}
+
+.ingredientsBox::-webkit-scrollbar-thumb {
+  background-color: var(--color-header);
+  border-radius: 12px;
+}
+
 .newMeal {
   color: var(--color-font);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: auto;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 60px;
   width: 98%;
 
   .btn {
@@ -24,28 +35,46 @@
   }
 
   .title {
-    /*     border: solid 1px red; */
     margin: 20px;
   }
 
-  .selectBox {
-    align-items: center;
-    display: flex;
-    height: 8%;
-    justify-content: center;
-    width: 82%;
-  }
-
-  .ingredientsBox {
-    /*   border: solid 1px red; */
+  .ingredientsContent {
+    /*  border: solid 1px red; */
     /* border: solid 2px var(--color-border); */
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
-    min-height: 500px;
+    height: 500px;
     justify-content: space-around;
+    overflow-y: hidden;
     padding: 4px;
     width: 70%;
+
+    .selectBox {
+      align-items: center;
+      border: solid 3px var(--color-border);
+      border-radius: 8px;
+      display: flex;
+      height: 80px;
+      justify-content: center;
+      margin: 8px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .ingredientsBox {
+      /*    border: solid 1px red; */
+      /* border: solid 2px var(--color-border); */
+      align-content: flex-start;
+      border-radius: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      height: 400px;
+      justify-content: flex-start;
+      overflow-y: scroll;
+      padding: 4px;
+      width: 98%;
+    }
 
     .ingredient {
       /*         border: solid 1px blue; */
@@ -54,25 +83,31 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      height: 160px;
+      height: 140px;
       justify-content: center;
       margin: 4px;
-      width: 20%;
+      padding: 4px 0;
+      width: 23%;
 
-      .ingredientName {
-        color: var(--color-header);
-        font-size: 0.9rem;
-        padding: 2px;
+      .ingredientHeader {
+        display: flex;
+        height: 36px;
         text-align: center;
-        width: 90%;
+        width: 100%;
+        .ingredientName {
+          color: var(--color-header);
+          font-size: 0.8rem;
+          width: 90%;
+        }
       }
 
       .imgContainer {
         /*  border: solid 2px gold; */
+        aspect-ratio: 1;
         border-radius: 12px;
         height: 60px;
         margin: 4px;
-        width: 60px;
+        /*    width: 60px; */
       }
 
       .ingredientValues {
@@ -123,7 +158,8 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    min-height: 100px;
+    height: 500px;
+    overflow: scroll;
     padding: 4px;
     width: 24%;
 

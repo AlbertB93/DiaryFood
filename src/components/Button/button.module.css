@@ -1,0 +1,16 @@
+.btn {
+  background: transparent;
+  border: solid 3px var(--color-header);
+  border-radius: 4px;
+  color: var(--color-header);
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin: 4px;
+  padding: 8px;
+}
+
+.btn:hover {
+  background: var(--color-header);
+  border: solid 3px var(--color-header);
+  color: black;
+}
