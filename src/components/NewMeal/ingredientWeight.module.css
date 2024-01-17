@@ -23,53 +23,34 @@
     width: 98%;
 
     .titleMeal {
-      font-size: 1.2rem;
+      font-size: 1rem;
       text-align: center;
-      width: auto;
+      width: 80%;
     }
 
     .imgContainerMeal {
       border: solid 1px silver;
+      border-radius: 8px;
       display: flex;
       height: 70px;
       justify-content: center;
+      margin: 6px;
       overflow: hidden;
       width: 70px;
-    }
-
-    .logoImgMeal {
-      margin: auto auto;
-      max-height: 110%;
+      .logoImgMeal {
+        margin: auto auto;
+        max-height: 110%;
+      }
     }
 
     .values {
+      color: var(--color-font);
       display: flex;
       flex-direction: row;
-      font-size: 0.7rem;
+      font-size: 0.9rem;
       justify-content: space-between;
       margin: 4px;
-      width: 70%;
+      width: 90%;
     }
-  }
-}
-
-.singleBtn {
-  color: var(--color-header);
-  display: flex;
-  justify-content: space-around;
-  margin: 6px;
-
-  .input {
-    color: black;
-    width: 30%;
-  }
-
-  .addBtn {
-    background: transparent;
-    border: solid 1px var(--color-header);
-    color: var(--color-font);
-    cursor: pointer;
-    font-size: 0.6rem;
-    padding: 4px;
   }
 }

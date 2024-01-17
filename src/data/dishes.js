@@ -24,6 +24,7 @@ export const dishes = [
       "oliwa z oliwek",
       "ser parmezan",
     ],
+    description: "Przepis z bazy na szakszuke",
   },
   {
     id: 2,
@@ -42,6 +43,7 @@ export const dishes = [
       "oliwa z oliwek",
       "ser parmezan",
     ],
+    description: "Przepis z bazy na spaghetti",
   },
   {
     id: 3,
@@ -53,13 +55,14 @@ export const dishes = [
     carbons: 36,
     proteins: 20,
     ingredients: [
-      "makaron",
-      "mięso mielone wieprzowe",
-      "passata pomidorowa",
-      "cebula",
-      "oliwa z oliwek",
-      "ser parmezan",
+      "tortilla pszenna",
+      "filet z kurczaka",
+      "ser żółty",
+      "ketchup",
+      "papryka",
+      "sałata",
     ],
+    description: "Przepis z bazy na tortille",
   },
 
   {
@@ -71,6 +74,15 @@ export const dishes = [
     fats: 30,
     carbons: 70,
     proteins: 25,
+    ingredients: [
+      "tortilla pszenna",
+      "filet z kurczaka",
+      "ser żółty",
+      "ketchup",
+      "papryka",
+      "sałata",
+    ],
+    description: "Przepis z bazy na schab",
   },
   /*
   {

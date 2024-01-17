@@ -1,6 +1,6 @@
-import styles from "../CSS/day.module.css";
+import styles from "../CSS/dailyMenu.module.css";
 
-export function Day({ summaryOfDay, arrOfMeals }) {
+export function DailyMenu({ summaryOfDay, listOfMeals }) {
   return (
     <div className={styles.day}>
       <div className={styles.imgContainer}>
@@ -8,7 +8,7 @@ export function Day({ summaryOfDay, arrOfMeals }) {
       </div>
       <h3 className={styles.title}>Aktualny jadłospis</h3>
 
-      {arrOfMeals.map((meal) => (
+      {listOfMeals.map((meal) => (
         <div key={meal.id} className={styles.singleMeal}>
           <div className={styles.imgContainerMeal}>
             <img src={meal.img} alt="Zdjęcie" className={styles.logoImgMeal} />

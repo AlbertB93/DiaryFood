@@ -2,6 +2,7 @@ import styles from "../CSS/smallRecipe.module.css";
 import { ButtonSmall } from "./ButtonSmall/ButtonSmall";
 
 export function SmallRecipe({
+  id,
   title,
   imgUrl,
   kcal,
@@ -9,28 +10,30 @@ export function SmallRecipe({
   carbons,
   proteins,
   ingredients,
-  addToDayMenu,
+  description,
+  addToDailyMenu,
   setShowMeals,
   setShowRecipe,
-  setCurrentMeal,
+  setActiveMeal,
 }) {
-  function addToDailyMenu(e) {
+  function handleAddToDailyMenu(e) {
     e.preventDefault();
-    addToDayMenu(title, imgUrl, kcal, fats, carbons, proteins);
+    addToDailyMenu(id, title, imgUrl, kcal, fats, carbons, proteins);
   }
 
-  function eventHandleShowRecipe(e) {
+  function handleShowRecipe(e) {
     e.preventDefault();
     setShowMeals();
     setShowRecipe();
-    setCurrentMeal((prevState) => {
+    setActiveMeal((prevState) => {
       prevState.name = title;
       prevState.imgUrl = imgUrl;
       prevState.kcal = kcal;
       prevState.fats = fats;
       prevState.carbons = carbons;
       prevState.proteins = proteins;
-      prevState.ingredinets = ingredients;
+      prevState.ingredients = ingredients;
+      prevState.description = description;
       return { ...prevState };
     });
   }
@@ -44,14 +47,8 @@ export function SmallRecipe({
         {kcal} kcal. T: {fats}g. W: {carbons}g. B: {proteins} g.
       </p>
       <div className={styles.buttons}>
-        {/*         <button className={styles.btn} onClick={eventHandleShowRecipe}>
-          Pokaż przepis
-        </button> */}
-        <ButtonSmall onClick={eventHandleShowRecipe}>Pokaż przepis</ButtonSmall>
-        <ButtonSmall onClick={addToDailyMenu}>Dodaj</ButtonSmall>
-        {/*         <button className={styles.btn} onClick={addToDailyMenu}>
-          Dodaj{" "}
-        </button> */}
+        <ButtonSmall onClick={handleShowRecipe}>Pokaż przepis</ButtonSmall>
+        <ButtonSmall onClick={handleAddToDailyMenu}>Dodaj</ButtonSmall>
       </div>
     </div>
   );

@@ -1,0 +1,82 @@
+.newMealComposition::-webkit-scrollbar {
+  background-color: rgb(52, 50, 50);
+  border-radius: 4px;
+  width: 8px;
+}
+
+.newMealComposition::-webkit-scrollbar-thumb {
+  background-color: var(--color-header);
+  border-radius: 4px;
+}
+
+.newMealComposition {
+  align-items: center;
+  border: solid 2px var(--color-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  overflow-y: scroll;
+  padding: 4px;
+  width: 28%;
+
+  .titleNewMeal {
+    color: var(--color-header);
+    text-align: center;
+  }
+
+  .singleIngredient {
+    align-items: center;
+    border-bottom: 1px whitesmoke solid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 80px;
+    justify-content: space-evenly;
+    margin: 2px;
+    padding: 2px;
+    width: 98%;
+
+    .titleMeal {
+      color: white;
+      font-size: 0.8rem;
+      text-align: center;
+      width: auto;
+    }
+
+    .titleWeight {
+      font-size: 0.8rem;
+      text-align: center;
+      width: 80%;
+    }
+
+    .imgContainerMeal {
+      background-color: var(--color-main);
+      border: solid 1px silver;
+      border-radius: 12px;
+      display: flex;
+      height: 40px;
+      justify-content: center;
+      overflow: hidden;
+      width: 40px;
+    }
+
+    .logoImgMeal {
+      margin: auto auto;
+      max-height: 110%;
+    }
+
+    .values {
+      display: flex;
+      flex-direction: row;
+      font-size: 0.7rem;
+      justify-content: space-between;
+      margin: 4px;
+      width: 100%;
+    }
+  }
+
+  h5 {
+    margin: 4px;
+  }
+}

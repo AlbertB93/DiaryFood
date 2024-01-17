@@ -4,9 +4,10 @@ import { dishes } from "../data/dishes.js";
 import { Header } from "./Header.jsx";
 import { SingleRecipe } from "./SingleRecipe.jsx";
 import { useState } from "react";
-import { NewMeal } from "./NewMeal.jsx";
+import { NewMeal } from "./NewMeal/NewMeal.jsx";
 
 const initialCurrentMeal = {
+  id: 0,
   name: "",
   imgUrl: "",
   kcal: 0,
@@ -14,10 +15,11 @@ const initialCurrentMeal = {
   carbons: 0,
   proteins: 0,
   ingredients: [],
+  description: "",
 };
 
 export function Content({
-  addToDayMenu,
+  addToDailyMenu,
   showMeals,
   setShowMeals,
   showRecipe,
@@ -27,10 +29,8 @@ export function Content({
   showHomePage,
   valuesOfMeal,
   setValuesOfMeal,
-  /*   listOfIngredients,
-  setListOfIngredient */
 }) {
-  const [currentMeal, setCurrentMeal] = useState(initialCurrentMeal);
+  const [activeMeal, setActiveMeal] = useState(initialCurrentMeal);
 
   return (
     <div className={styles.content}>
@@ -54,18 +54,19 @@ export function Content({
               carbons={dish.carbons}
               proteins={dish.proteins}
               ingredients={dish.ingredients}
-              addToDayMenu={addToDayMenu}
+              description={dish.description}
+              addToDailyMenu={addToDailyMenu}
               showMeals={showMeals}
               setShowMeals={setShowMeals}
               setShowRecipe={setShowRecipe}
-              setCurrentMeal={setCurrentMeal}
+              setActiveMeal={setActiveMeal}
             />
           ))}
         </div>
       )}
       {showRecipe && (
         <SingleRecipe
-          currentMeal={currentMeal}
+          activeMeal={activeMeal}
           setShowMeals={setShowMeals}
           setShowRecipe={setShowRecipe}
         ></SingleRecipe>
@@ -75,7 +76,7 @@ export function Content({
           valuesOfMeal={valuesOfMeal}
           setValuesOfMeal={setValuesOfMeal}
           showHomePage={showHomePage}
-          addToDayMenu={addToDayMenu}
+          addToDailyMenu={addToDailyMenu}
         ></NewMeal>
       )}
     </div>

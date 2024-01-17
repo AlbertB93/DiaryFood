@@ -1,20 +1,19 @@
-import { useState } from "react";
 import "./App.css";
+import { useState } from "react";
 import { Content } from "./components/Content";
-import { Day } from "./components/Day";
+import { DailyMenu } from "./components/DailyMenu";
 
 const initialSummaryOfDay = { kcal: 0, fats: 0, carbons: 0, proteins: 0 };
 
 function App() {
   const [summaryOfDay, setSummaryOfDay] = useState(initialSummaryOfDay);
-  const [arrOfMeals, setArrOfMeals] = useState([]);
-
   const [showRecipe, setShowRecipe] = useState(false);
-  const [showMeals, setShowMeals] = useState(true);
-  const [showNewMeal, setShowNewMeal] = useState(false);
-
+  const [showMeals, setShowMeals] = useState(false);
+  const [showNewMeal, setShowNewMeal] = useState(true);
+  /* DailMenu */
+  const [listOfMeals, setListOfMeals] = useState([]);
   /* New Meal */
-  const [valuesOfMeal, setValuesOfMeal] = useState({
+  const [valuesOfNewMeal, setValuesOfNewMeal] = useState({
     kcal: 0,
     fats: 0,
     carbons: 0,
@@ -23,7 +22,8 @@ function App() {
 
   /*--------------------------*/
 
-  function addToDayMenu(
+  function addToDailyMenu(
+    newId,
     newTitle,
     newImgUrl,
     newKcal,
@@ -39,11 +39,11 @@ function App() {
       return { ...prevState };
     });
 
-    setArrOfMeals((prevState) => {
+    setListOfMeals((prevState) => {
       return [
         ...prevState,
         {
-          id: Math.random(),
+          id: newId,
           title: newTitle,
           img: newImgUrl,
           kcal: newKcal,
@@ -53,6 +53,7 @@ function App() {
         },
       ];
     });
+    setValuesOfNewMeal({ kcal: 0, fats: 0, carbons: 0, proteins: 0 });
   }
 
   function showNewMealComponent(e) {
@@ -70,7 +71,7 @@ function App() {
     <div className="container">
       <h1>Skomponuj swój dzień jedzenia!</h1>
       <Content
-        addToDayMenu={addToDayMenu}
+        addToDayMenu={addToDailyMenu}
         showMeals={showMeals}
         setShowMeals={() => setShowMeals((prevState) => !prevState)}
         showRecipe={showRecipe}
@@ -78,12 +79,13 @@ function App() {
         showNewMeal={showNewMeal}
         showNewMealComponent={showNewMealComponent}
         showHomePage={showHomePage}
-        valuesOfMeal={valuesOfMeal}
-        setValuesOfMeal={setValuesOfMeal}
-        /*         listOfIngredient={listOfIngredient}
-        setListOfIngredient={setListOfIngredient} */
+        valuesOfMeal={valuesOfNewMeal}
+        setValuesOfMeal={setValuesOfNewMeal}
       ></Content>
-      <Day summaryOfDay={summaryOfDay} arrOfMeals={arrOfMeals}></Day>
+      <DailyMenu
+        summaryOfDay={summaryOfDay}
+        listOfMeals={listOfMeals}
+      ></DailyMenu>
     </div>
   );
 }

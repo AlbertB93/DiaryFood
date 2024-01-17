@@ -1,0 +1,49 @@
+.newIngredient {
+  background-color: var(--color-main);
+  border: solid 3px var(--color-header);
+  border-radius: 8px;
+  color: var(--color-font);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 250px;
+  justify-content: center;
+  margin-left: 300px;
+  margin-top: 150px;
+  padding: 6px 0px;
+  position: absolute;
+  width: 250px;
+  z-index: 1;
+
+  .title {
+    align-self: center;
+    color: var(--color-header);
+    font-size: 0.8rem;
+    padding: 4px;
+    text-align: center;
+  }
+
+  .form {
+    font-size: 0.8rem;
+    padding: 4px;
+    .singleInput {
+      margin: 4px 0;
+      padding: 0 2px;
+
+      .input {
+        margin: 0 10px;
+        width: 60px;
+      }
+
+      .inputName {
+        margin: 0 10px;
+        width: 100px;
+      }
+    }
+
+    .textParagraph {
+      color: var(--color-header);
+      text-align: center;
+    }
+  }
+}

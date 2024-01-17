@@ -1,0 +1,13 @@
+.inputBox {
+  align-items: center;
+  color: var(--color-header);
+  display: flex;
+  justify-content: space-around;
+  margin: 6px;
+
+  .input {
+    color: black;
+    height: 24px;
+    width: 30%;
+  }
+}

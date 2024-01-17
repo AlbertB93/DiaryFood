@@ -1,7 +1,7 @@
 import { Form } from "./Form/Form.jsx";
 import styles from "../CSS/header.module.css";
 import { Button } from "./Button/Button.jsx";
-export function Header({ showNewMealComponent, showHomePage, showMeals }) {
+export function Header({ showNewMealComponent, showMeals }) {
   return (
     <div className={styles.header}>
       {showMeals ? (
