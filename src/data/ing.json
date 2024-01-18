@@ -1,0 +1,26 @@
+{
+  "Records": [
+    {
+      "id": 1,
+      "name": "bułka grahamka",
+      "group": "pieczywo",
+      "image": "grahamka",
+      "kcal": 100,
+      "fats": 10,
+      "carbons": 20,
+      "proteins": 30,
+      "weight": 80
+    },
+    {
+      "id": 2,
+      "name": "bułka kajzerka",
+      "group": "pieczywo",
+      "image": "grahamka",
+      "kcal": 200,
+      "fats": 10,
+      "carbons": 20,
+      "proteins": 30,
+      "weight": 60
+    }
+  ]
+}

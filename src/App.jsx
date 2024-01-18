@@ -8,8 +8,8 @@ const initialSummaryOfDay = { kcal: 0, fats: 0, carbons: 0, proteins: 0 };
 function App() {
   const [summaryOfDay, setSummaryOfDay] = useState(initialSummaryOfDay);
   const [showRecipe, setShowRecipe] = useState(false);
-  const [showMeals, setShowMeals] = useState(false);
-  const [showNewMeal, setShowNewMeal] = useState(true);
+  const [showMeals, setShowMeals] = useState(true);
+  const [showNewMeal, setShowNewMeal] = useState(false);
   /* DailMenu */
   const [listOfMeals, setListOfMeals] = useState([]);
   /* New Meal */
@@ -67,11 +67,30 @@ function App() {
     setShowNewMeal((prevState) => !prevState);
   }
 
+  function deleteFromMenu(id, kcal, fats, carbons, proteins) {
+    setListOfMeals((prevState) => prevState.filter((meal) => meal.id !== id));
+
+    setSummaryOfDay((prevState) => {
+      prevState.kcal -= kcal;
+      prevState.fats -= fats;
+      prevState.carbons -= carbons;
+      prevState.proteins -= proteins;
+      return { ...prevState };
+    });
+  }
+
+  /*   function goOffEverySecond() {
+    alert("Another one");
+  }
+
+  setTimeout(goOffEverySecond, 1000);
+ */
+
   return (
     <div className="container">
       <h1>Skomponuj swój dzień jedzenia!</h1>
       <Content
-        addToDayMenu={addToDailyMenu}
+        addToDailyMenu={addToDailyMenu}
         showMeals={showMeals}
         setShowMeals={() => setShowMeals((prevState) => !prevState)}
         showRecipe={showRecipe}
@@ -85,6 +104,7 @@ function App() {
       <DailyMenu
         summaryOfDay={summaryOfDay}
         listOfMeals={listOfMeals}
+        deleteFromMenu={deleteFromMenu}
       ></DailyMenu>
     </div>
   );

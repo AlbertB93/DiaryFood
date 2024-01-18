@@ -17,6 +17,7 @@ export function Header({ showNewMealComponent, showMeals }) {
       ) : null}
       <div className={styles.fields}>
         <>
+          <Button onClick={showNewMealComponent}>Kategorie posiłków</Button>
           <Form> Wyszukaj potrawę: </Form>
           <Button onClick={showNewMealComponent}>Skoponuj swój posiłek!</Button>
         </>

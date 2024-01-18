@@ -31,6 +31,43 @@ export function Content({
   setValuesOfMeal,
 }) {
   const [activeMeal, setActiveMeal] = useState(initialCurrentMeal);
+  const [recipesOnHomePage, setRecipesOnHomePage] = useState([1, 4, 6]);
+  const [isBlur, setIsBlur] = useState(true);
+
+  let activeDishes = dishes.filter(
+    (meal) =>
+      meal.id === recipesOnHomePage[0] ||
+      meal.id === recipesOnHomePage[1] ||
+      meal.id === recipesOnHomePage[2]
+  );
+
+  let a,
+    b,
+    c = 0;
+
+  function changeIsBlur() {
+    console.log("changeIsBlur");
+    setIsBlur((prevState) => !prevState);
+  }
+
+  function setRandomRecipes() {
+    console.log("setRandomRecipes");
+    setTimeout(setIsBlur(false), 10);
+    a = Math.floor(Math.random() * 14 + 1);
+    b = Math.floor(Math.random() * 14 + 1);
+    c = Math.floor(Math.random() * 14 + 1);
+    while (a === b) {
+      b = Math.floor(Math.random() * 14 + 1);
+    }
+    while (c === a || c === b) {
+      c = Math.floor(Math.random() * 14 + 1);
+    }
+    console.log("A [" + a + "] B [" + b + "] C [" + c + "]");
+    setTimeout(setIsBlur(true), 10);
+    setRecipesOnHomePage([a, b, c]);
+  }
+
+  /*   setInterval(setRandomRecipes, 5000); */
 
   return (
     <div className={styles.content}>
@@ -42,8 +79,12 @@ export function Content({
         ></Header>
       )}
       {showMeals && (
-        <div className={styles.dishes}>
-          {dishes.map((dish) => (
+        <div
+          className={
+            isBlur ? `${styles.dishes}` : `${styles.dishes} ${styles.onBlur}`
+          }
+        >
+          {activeDishes.map((dish) => (
             <SmallRecipe
               key={dish.id}
               id={dish.id}

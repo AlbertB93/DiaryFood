@@ -1,6 +1,11 @@
 import styles from "../CSS/dailyMenu.module.css";
+import { ButtonSmall } from "./ButtonSmall/ButtonSmall";
 
-export function DailyMenu({ summaryOfDay, listOfMeals }) {
+export function DailyMenu({ summaryOfDay, listOfMeals, deleteFromMenu }) {
+  function handleDeleteFromDailyMenu(id, kcal, fats, carbons, proteins) {
+    deleteFromMenu(id, kcal, fats, carbons, proteins);
+  }
+
   return (
     <div className={styles.day}>
       <div className={styles.imgContainer}>
@@ -8,17 +13,27 @@ export function DailyMenu({ summaryOfDay, listOfMeals }) {
       </div>
       <h3 className={styles.title}>Aktualny jadłospis</h3>
 
-      {listOfMeals.map((meal) => (
-        <div key={meal.id} className={styles.singleMeal}>
+      {listOfMeals.map(({ id, img, title, kcal, fats, carbons, proteins }) => (
+        <div key={id} className={styles.singleMeal}>
           <div className={styles.imgContainerMeal}>
-            <img src={meal.img} alt="Zdjęcie" className={styles.logoImgMeal} />
+            <img src={img} alt="Zdjęcie" className={styles.logoImgMeal} />
           </div>
-          <p className={styles.titleMeal}>{meal.title}</p>
+          <p className={styles.titleMeal}>
+            {title}{" "}
+            <ButtonSmall
+              onClick={() =>
+                handleDeleteFromDailyMenu(id, kcal, fats, carbons, proteins)
+              }
+            >
+              X{" "}
+            </ButtonSmall>
+          </p>
+
           <div className={styles.values}>
-            <p className={styles.value}>kcal:{meal.kcal}</p>
-            <p className={styles.value}>T:{meal.fats}g.</p>
-            <p className={styles.value}>W:{meal.carbons}g.</p>
-            <p className={styles.value}>B:{meal.proteins} g.</p>
+            <p className={styles.value}>kcal:{kcal}</p>
+            <p className={styles.value}>T:{fats}g.</p>
+            <p className={styles.value}>W:{carbons}g.</p>
+            <p className={styles.value}>B:{proteins} g.</p>
           </div>
         </div>
       ))}

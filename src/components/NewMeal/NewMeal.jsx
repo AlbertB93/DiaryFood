@@ -15,9 +15,9 @@ export function NewMeal({
   showHomePage,
   addToDayMenu,
 }) {
-  const [showIngredientsBox, setShowIngredientsBox] = useState(false);
+  const [showIngredientsBox, setShowIngredientsBox] = useState(true);
   const [showIngredientWeight, setShowIngredientWeight] = useState(false);
-  const [showNewIngredint, setshowNewIngredint] = useState(true);
+  const [showNewIngredint, setshowNewIngredint] = useState(false);
 
   /* */
   const [activeIngredient, setActiveIngredient] = useState({
@@ -98,6 +98,7 @@ export function NewMeal({
     }
 
     setShowIngredientsBox((prevState) => !prevState);
+    setShowIngredientWeight((prevState) => !prevState);
   }
 
   function eventHandlerDeleteIngredient(id, kcal, fats, carbons, proteins) {
@@ -154,10 +155,10 @@ export function NewMeal({
 
   /* Testujemy */
 
-  function addIngredient() {
+  /*   function addIngredient() {
     setShowIngredientsBox((prevState) => !prevState);
     setshowNewIngredint((prevState) => !prevState);
-  }
+  } */
 
   return (
     <div className={styles.newMeal}>
@@ -194,7 +195,7 @@ export function NewMeal({
         }
       >
         {/* TESTUJEMY */}
-        <Button onClick={addIngredient}>Dodaj składnik!</Button>
+        {/*      <Button onClick={addIngredient}>Dodaj składnik!</Button> */}
         <div className={styles.selectBox}>
           <Select filter={filter} setFilter={setFilter}></Select>
           <Form inputValue={inputValue} setInputValue={setInputValue}>
