@@ -79,4 +79,20 @@
   h5 {
     margin: 4px;
   }
+
+  .form {
+    align-items: center;
+    border-radius: 4px;
+    color: var(--color-header);
+    display: flex;
+    justify-content: space-around;
+    padding: 4px;
+    width: 100%;
+
+    input {
+      background-color: transparent;
+      border: solid 1px var(--color-header);
+      color: var(--color-header);
+    }
+  }
 }

@@ -8,7 +8,7 @@ const initialSummaryOfDay = { kcal: 0, fats: 0, carbons: 0, proteins: 0 };
 function App() {
   const [summaryOfDay, setSummaryOfDay] = useState(initialSummaryOfDay);
   const [showRecipe, setShowRecipe] = useState(false);
-  const [showMeals, setShowMeals] = useState(true);
+  const [showMeals, setShowMeals] = useState(false);
   const [showNewMeal, setShowNewMeal] = useState(false);
   /* DailMenu */
   const [listOfMeals, setListOfMeals] = useState([]);
@@ -19,6 +19,10 @@ function App() {
     carbons: 0,
     proteins: 0,
   });
+
+  /* Recipes */
+
+  const [showAllRecipes, setShowAllRecipes] = useState(true);
 
   /*--------------------------*/
 
@@ -67,6 +71,12 @@ function App() {
     setShowNewMeal((prevState) => !prevState);
   }
 
+  function showAllRecipesComponent(e) {
+    e.preventDefault();
+    setShowMeals((prevState) => !prevState);
+    setShowAllRecipes((prevState) => !prevState);
+  }
+
   function deleteFromMenu(id, kcal, fats, carbons, proteins) {
     setListOfMeals((prevState) => prevState.filter((meal) => meal.id !== id));
 
@@ -100,6 +110,8 @@ function App() {
         showHomePage={showHomePage}
         valuesOfMeal={valuesOfNewMeal}
         setValuesOfMeal={setValuesOfNewMeal}
+        showAllRecipes={showAllRecipes}
+        showAllRecipesComponent={showAllRecipesComponent}
       ></Content>
       <DailyMenu
         summaryOfDay={summaryOfDay}

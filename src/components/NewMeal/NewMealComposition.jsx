@@ -6,6 +6,8 @@ export function NewMealComposition({
   valuesOfMeal,
   handleAddToDay,
   eventHandlerDeleteIngredient,
+  titleMyMeal,
+  setTitleMyMeal,
 }) {
   function deleteIngredient(id, kcal, fats, carbons, proteins) {
     eventHandlerDeleteIngredient(id, kcal, fats, carbons, proteins);
@@ -43,9 +45,18 @@ export function NewMealComposition({
       <h5>Tłuszcze: {valuesOfMeal.fats} g.</h5>
       <h5>Węglowodany: {valuesOfMeal.carbons} g.</h5>
       <h5>Białka: {valuesOfMeal.proteins} g.</h5>
+      <form action="" className={styles.form}>
+        <label htmlFor="">Podaj nazwę</label>
+        <input
+          type="text"
+          value={titleMyMeal}
+          onChange={(e) => setTitleMyMeal(e.target.value)}
+        />
+      </form>
       <ButtonSmall
         onClick={() =>
           handleAddToDay(
+            titleMyMeal,
             valuesOfMeal.kcal,
             valuesOfMeal.fats,
             valuesOfMeal.carbons,

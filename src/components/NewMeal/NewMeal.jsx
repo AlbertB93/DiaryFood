@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./newMeal.module.css";
-import { ingredients } from "../../data/ingredients.js";
 import { IngredientWeight } from "./IngredientWeight.jsx";
 import { Select } from "../Select/Select.jsx";
 import { Button } from "../Button/Button.jsx";
@@ -13,7 +12,7 @@ export function NewMeal({
   valuesOfMeal,
   setValuesOfMeal,
   showHomePage,
-  addToDayMenu,
+  addToDailyMenu,
 }) {
   const [showIngredientsBox, setShowIngredientsBox] = useState(true);
   const [showIngredientWeight, setShowIngredientWeight] = useState(false);
@@ -133,32 +132,69 @@ export function NewMeal({
     showHomePage();
   }
 
-  function handleAddToDay(kcal, fats, carbons, proteins) {
+  function handleAddToDay(titleMyMeal, kcal, fats, carbons, proteins) {
     const imgUrl = "./felek.png";
-    addToDayMenu("Moja kompozycja", imgUrl, kcal, fats, carbons, proteins);
+    let idMyMeal = Math.random();
+    addToDailyMenu(
+      idMyMeal,
+      titleMyMeal,
+      imgUrl,
+      kcal,
+      fats,
+      carbons,
+      proteins
+    );
+
     setListOfIngredients([]);
+    setTitleMyMeal("");
   }
 
   const [listOfIngredients, setListOfIngredients] = useState([]);
   const [numberOfGrams, setNumberOfGrams] = useState();
   const [numberOfPieces, setNumberOfPieces] = useState(null);
+  const [titleMyMeal, setTitleMyMeal] = useState("");
 
   /* Filtry*/
+
+  const [inputValue, setInputValue] = useState("");
+
+  /* Testujemy */
+
+  const [ingredients, setIngredients] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let isCancelled = false;
+
+    fetch("/db/ingredients.json")
+      .then((res) => {
+        if (res.ok) {
+          setError(null);
+          return res.json();
+        }
+
+        throw new Error("Coś poszło nie tak...");
+      })
+      .then((res) => {
+        if (isCancelled) {
+          return;
+        }
+        setIngredients(res);
+      })
+      .catch((e) => {
+        setError(e);
+      });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
 
   const [filter, setFilter] = useState("Wszystkie");
   const filteredIngredients =
     filter === "Wszystkie"
       ? ingredients
       : ingredients.filter((ingredient) => ingredient.group === filter);
-
-  const [inputValue, setInputValue] = useState("");
-
-  /* Testujemy */
-
-  /*   function addIngredient() {
-    setShowIngredientsBox((prevState) => !prevState);
-    setshowNewIngredint((prevState) => !prevState);
-  } */
 
   return (
     <div className={styles.newMeal}>
@@ -186,6 +222,8 @@ export function NewMeal({
         valuesOfMeal={valuesOfMeal}
         handleAddToDay={handleAddToDay}
         eventHandlerDeleteIngredient={eventHandlerDeleteIngredient}
+        titleMyMeal={titleMyMeal}
+        setTitleMyMeal={setTitleMyMeal}
       ></NewMealComposition>
       <div
         className={
@@ -204,43 +242,56 @@ export function NewMeal({
           <Button onClick={handleHomePage}>Strona główna </Button>
         </div>
         <div className={styles.ingredientsBox}>
-          {filteredIngredients
-            .filter((ingredient) => ingredient.name.includes(inputValue))
-            .map(
-              ({ id, name, image, kcal, fats, carbons, proteins, weight }) => (
-                <div key={id} className={styles.ingredient}>
-                  <div className={styles.ingredientHeader}>
-                    <p className={styles.ingredientName}>{name}</p>
-                    <ButtonSmall
-                      onClick={() =>
-                        handleActiveIngredient(
-                          name,
-                          image,
-                          kcal,
-                          fats,
-                          carbons,
-                          proteins,
-                          weight
-                        )
-                      }
-                    >
-                      +
-                    </ButtonSmall>
+          {error ? (
+            <span>{error.message}</span>
+          ) : (
+            filteredIngredients
+              .filter((ingredient) => ingredient.name.includes(inputValue))
+              .map(
+                ({
+                  id,
+                  name,
+                  image,
+                  kcal,
+                  fats,
+                  carbons,
+                  proteins,
+                  weight,
+                }) => (
+                  <div key={id} className={styles.ingredient}>
+                    <div className={styles.ingredientHeader}>
+                      <p className={styles.ingredientName}>{name}</p>
+                      <ButtonSmall
+                        onClick={() =>
+                          handleActiveIngredient(
+                            name,
+                            image,
+                            kcal,
+                            fats,
+                            carbons,
+                            proteins,
+                            weight
+                          )
+                        }
+                      >
+                        +
+                      </ButtonSmall>
+                    </div>
+                    <img
+                      src={image}
+                      alt="FOTKA"
+                      className={styles.imgContainer}
+                    />
+                    <div className={styles.ingredientValues}>
+                      <p>{kcal} kcal. </p>
+                      <p>T: {fats}g. </p>
+                      <p>W: {carbons}g.</p>
+                      <p>B: {proteins} g.</p>
+                    </div>
                   </div>
-                  <img
-                    src={image}
-                    alt="FOTKA"
-                    className={styles.imgContainer}
-                  />
-                  <div className={styles.ingredientValues}>
-                    <p>{kcal} kcal. </p>
-                    <p>T: {fats}g. </p>
-                    <p>W: {carbons}g.</p>
-                    <p>B: {proteins} g.</p>
-                  </div>
-                </div>
+                )
               )
-            )}
+          )}
         </div>
       </div>
     </div>

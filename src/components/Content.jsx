@@ -5,6 +5,7 @@ import { Header } from "./Header.jsx";
 import { SingleRecipe } from "./SingleRecipe.jsx";
 import { useState } from "react";
 import { NewMeal } from "./NewMeal/NewMeal.jsx";
+import { AllRecipes } from "./Recipes/AllRecipes/AllRecipes.jsx";
 
 const initialCurrentMeal = {
   id: 0,
@@ -29,9 +30,11 @@ export function Content({
   showHomePage,
   valuesOfMeal,
   setValuesOfMeal,
+  showAllRecipes,
+  showAllRecipesComponent,
 }) {
   const [activeMeal, setActiveMeal] = useState(initialCurrentMeal);
-  const [recipesOnHomePage, setRecipesOnHomePage] = useState([1, 4, 6]);
+  const [recipesOnHomePage, setRecipesOnHomePage] = useState([1, 2, 3]);
   const [isBlur, setIsBlur] = useState(true);
 
   let activeDishes = dishes.filter(
@@ -52,7 +55,7 @@ export function Content({
 
   function setRandomRecipes() {
     console.log("setRandomRecipes");
-    setTimeout(setIsBlur(false), 10);
+
     a = Math.floor(Math.random() * 14 + 1);
     b = Math.floor(Math.random() * 14 + 1);
     c = Math.floor(Math.random() * 14 + 1);
@@ -63,19 +66,21 @@ export function Content({
       c = Math.floor(Math.random() * 14 + 1);
     }
     console.log("A [" + a + "] B [" + b + "] C [" + c + "]");
-    setTimeout(setIsBlur(true), 10);
     setRecipesOnHomePage([a, b, c]);
   }
 
-  /*   setInterval(setRandomRecipes, 5000); */
+  /*   setTimeout(changeIsBlur, 2000);
+  setTimeout(setRandomRecipes, 4000); */
+  /*   setTimeout(changeIsBlur, 6000); */
+  /*  setInterval(setRandomRecipes, 5000); */
 
   return (
     <div className={styles.content}>
       {showMeals && (
         <Header
-          showNewMealComponent={showNewMealComponent}
-          showHomePage={showHomePage}
+          showAllRecipesComponent={showAllRecipesComponent}
           showMeals={showMeals}
+          showNewMealComponent={showNewMealComponent}
         ></Header>
       )}
       {showMeals && (
@@ -120,6 +125,7 @@ export function Content({
           addToDailyMenu={addToDailyMenu}
         ></NewMeal>
       )}
+      {showAllRecipes && <AllRecipes dishes={dishes}></AllRecipes>}
     </div>
   );
 }

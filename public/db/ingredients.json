@@ -1,0 +1,145 @@
+[
+  {
+    "id": 1,
+    "name": "bułka grahamka",
+    "group": "pieczywo",
+    "image": "/ingredients/breads/grahamka.PNG?url",
+    "kcal": 100,
+    "fats": 10,
+    "carbons": 20,
+    "proteins": 30,
+    "weight": 80
+  },
+  {
+    "id": 2,
+    "name": " bułka kajzerka",
+    "group": "pieczywo",
+    "image": "/ingredients/breads/kajzerka.PNG?url",
+    "kcal": 120,
+    "fats": 20,
+    "carbons": 22,
+    "proteins": 33,
+    "weight": 90
+  },
+  {
+    "id": 3,
+    "name": " bułka pszenno-żytnia",
+    "group": "pieczywo",
+    "image": "/ingredients/breads/pszennoZytnia.PNG?url",
+    "kcal": 111,
+    "fats": 11,
+    "carbons": 14,
+    "proteins": 8,
+    "weight": 100
+  },
+  {
+    "id": 4,
+    "name": "banan",
+    "group": "owoce",
+    "image": "/ingredients/fruits/banan.png?url",
+    "kcal": 100,
+    "fats": 10,
+    "carbons": 20,
+    "proteins": 30,
+    "weight": 80
+  },
+  {
+    "id": 5,
+    "name": " gruszka",
+    "group": "owoce",
+    "image": "/ingredients/fruits/gruszka.png?url",
+    "kcal": 120,
+    "fats": 20,
+    "carbons": 22,
+    "proteins": 33,
+    "weight": 90
+  },
+  {
+    "id": 6,
+    "name": "jabłko",
+    "group": "owoce",
+    "image": "/ingredients/fruits/jabłko.png?url",
+    "kcal": 111,
+    "fats": 11,
+    "carbons": 14,
+    "proteins": 8,
+    "weight": 100
+  },
+  {
+    "id": 7,
+    "name": "filet z kurczaka",
+    "group": "mieso",
+    "image": "/ingredients/meat/filetKurczak.png?url",
+    "kcal": 111,
+    "fats": 11,
+    "carbons": 14,
+    "proteins": 8,
+    "weight": 100
+  },
+  {
+    "id": 8,
+    "name": "mięso mielone z indyka",
+    "group": "mieso",
+    "image": "/ingredients/meat/mieloneIndyk.png?url",
+    "kcal": 111,
+    "fats": 11,
+    "carbons": 14,
+    "proteins": 8,
+    "weight": 100
+  },
+  {
+    "id": 9,
+    "name": "polędwica sopocka",
+    "group": "mieso",
+    "image": "/ingredients/meat/poledwicaSopocka.png?url",
+    "kcal": 111,
+    "fats": 11,
+    "carbons": 14,
+    "proteins": 8,
+    "weight": 100
+  },
+  {
+    "id": 10,
+    "name": "schab wieprzowy",
+    "group": "mieso",
+    "image": "/ingredients/meat/schabWieprzowy.png?url",
+    "kcal": 111,
+    "fats": 11,
+    "carbons": 14,
+    "proteins": 8,
+    "weight": 100
+  },
+  {
+    "id": 11,
+    "name": "papryka",
+    "group": "warzywa",
+    "image": "/ingredients/vegetables/papryka.png?url",
+    "kcal": 30,
+    "fats": 2,
+    "carbons": 25,
+    "proteins": 2,
+    "weight": 100
+  },
+  {
+    "id": 12,
+    "name": "pomidor",
+    "group": "warzywa",
+    "image": "/ingredients/vegetables/pomidor.png?url",
+    "kcal": 40,
+    "fats": 4,
+    "carbons": 20,
+    "proteins": 3,
+    "weight": 100
+  },
+  {
+    "id": 13,
+    "name": "ogórek zielony",
+    "group": "warzywa",
+    "image": "/ingredients/vegetables/ogorekZielony.png?url",
+    "kcal": 50,
+    "fats": 2,
+    "carbons": 20,
+    "proteins": 8,
+    "weight": 120
+  }
+]
