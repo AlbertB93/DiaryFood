@@ -3,7 +3,7 @@ import styles from "./newMeal.module.css";
 import { IngredientWeight } from "./IngredientWeight.jsx";
 import { Select } from "../Select/Select.jsx";
 import { Button } from "../Button/Button.jsx";
-import { Form } from "../Form/Form.jsx";
+import { Form } from "../Forms/Form.jsx";
 import { ButtonSmall } from "../ButtonSmall/ButtonSmall.jsx";
 import { NewMealComposition } from "./NewMealComposition.jsx";
 import { NewIngredient } from "./NewIngredient.jsx";
@@ -235,7 +235,9 @@ export function NewMeal({
         {/* TESTUJEMY */}
         {/*      <Button onClick={addIngredient}>Dodaj składnik!</Button> */}
         <div className={styles.selectBox}>
-          <Select filter={filter} setFilter={setFilter}></Select>
+          <Select filter={filter} setFilter={setFilter}>
+            Wybierz grupę składników:
+          </Select>
           <Form inputValue={inputValue} setInputValue={setInputValue}>
             Wyszukaj składnik:{" "}
           </Form>

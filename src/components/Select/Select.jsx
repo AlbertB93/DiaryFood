@@ -1,10 +1,10 @@
 import styles from "./select.module.css";
 
-export function Select({ filter, setFilter }) {
+export function Select({ children, filter, setFilter }) {
   return (
     <div className={styles.selectContainer}>
       <label htmlFor="ingredients" className={styles.label}>
-        Wybierz grupę składników:
+        {children}
       </label>
       <select
         value={filter}

@@ -1,14 +1,29 @@
-import { SmallRecipe } from "../../SmallRecipe";
 import styles from "./allRecipes.module.css";
-
-export function AllRecipes({ dishes }) {
+import { SmallRecipe } from "../../SmallRecipe";
+import { SmallForm } from "../../Forms/SmallForm";
+import { Button } from "../../Button/Button";
+import { Select } from "../../Select/Select";
+export function AllRecipes({ dishes, showHomePage }) {
+  function handleHomePage() {
+    showHomePage();
+  }
   return (
     <div className={styles.allRecipes}>
       <div className={styles.headerAllRecipes}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
-        molestias unde atque consectetur reiciendis assumenda eius beatae quo.
-        Delectus veniam iure accusamus nihil, ipsa dolores sapiente omnis ex
-        libero sunt?
+        <div className={styles.headerAllRecipesText}>
+          <p> Zostało Ci kilka produktów i nie wiesz co ugotować?</p>
+          <p>
+            Wybierz składniki, które masz, a poniżej zostaną wyświetlone
+            przepisy zawierające te składniki !
+          </p>
+        </div>
+
+        <Select> Wybierz grupę składników:</Select>
+        <Button onClick={handleHomePage}>Strona główna </Button>
+      </div>
+      <div className={styles.categories}>
+        <SmallForm>Do ilu kalorii?</SmallForm>
+        <Select>Wybierz kategorie przepisu</Select>
       </div>
       <div className={styles.recipesBox}>
         {dishes.map((dish) => (

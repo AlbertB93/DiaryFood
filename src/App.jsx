@@ -68,7 +68,8 @@ function App() {
 
   function showHomePage() {
     setShowMeals((prevState) => !prevState);
-    setShowNewMeal((prevState) => !prevState);
+    setShowNewMeal(false);
+    setShowAllRecipes(false);
   }
 
   function showAllRecipesComponent(e) {
@@ -98,7 +99,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Skomponuj swój dzień jedzenia!</h1>
+      {!showAllRecipes && <h1>Skomponuj swój dzień jedzenia!</h1>}
       <Content
         addToDailyMenu={addToDailyMenu}
         showMeals={showMeals}

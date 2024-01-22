@@ -125,7 +125,9 @@ export function Content({
           addToDailyMenu={addToDailyMenu}
         ></NewMeal>
       )}
-      {showAllRecipes && <AllRecipes dishes={dishes}></AllRecipes>}
+      {showAllRecipes && (
+        <AllRecipes dishes={dishes} showHomePage={showHomePage}></AllRecipes>
+      )}
     </div>
   );
 }

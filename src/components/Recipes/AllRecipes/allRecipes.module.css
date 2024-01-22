@@ -10,24 +10,49 @@
 }
 
 .allRecipes {
-  border: solid 1px red;
+  /*   border: solid 1px red; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-height: 620px;
+  justify-content: space-around;
+  max-height: 700px;
   width: 100%;
 
   .headerAllRecipes {
-    color: green;
+    border: solid 1px var(--color-border);
+    border-radius: 4px;
+    color: var(--color-font);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    justify-content: space-around;
+    margin: 10px;
+    width: 100%;
+
+    .headerAllRecipesText {
+      margin: 8px;
+      width: 90%;
+      p {
+        text-align: center;
+      }
+    }
+  }
+  .categories {
+    align-items: center;
+    border: solid 1px var(--color-border);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    width: 24%;
   }
 
   .recipesBox {
-    border: solid 1px yellow;
+    /*     border: solid 1px yellow; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-height: 500px;
+    max-height: 480px;
     overflow-y: scroll;
-    width: 100%;
+    width: 74%;
   }
 }

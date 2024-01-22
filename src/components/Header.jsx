@@ -1,4 +1,4 @@
-import { Form } from "./Form/Form.jsx";
+import { Form } from "./Forms/Form.jsx";
 import styles from "../CSS/header.module.css";
 import { Button } from "./Button/Button.jsx";
 export function Header({
@@ -21,7 +21,7 @@ export function Header({
       ) : null}
       <div className={styles.fields}>
         <>
-          <Button onClick={showAllRecipesComponent}>Kategorie posiłków</Button>
+          <Button onClick={showAllRecipesComponent}>Wszystkie przepisy</Button>
           <Form> Wyszukaj potrawę: </Form>
           <Button onClick={showNewMealComponent}>Skoponuj swój posiłek!</Button>
         </>
