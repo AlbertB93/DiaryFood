@@ -19,10 +19,12 @@
   width: 100%;
 
   .headerAllRecipes {
-    border: solid 1px var(--color-border);
+    align-items: center;
+    /*     border: solid 1px var(--color-border); */
     border-radius: 4px;
     color: var(--color-font);
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     font-size: 1rem;
     justify-content: space-around;
@@ -30,20 +32,56 @@
     width: 100%;
 
     .headerAllRecipesText {
+      /*    border: solid 1px blue; */
       margin: 8px;
       width: 90%;
       p {
         text-align: center;
       }
     }
+
+    .headerAllRecipesFilters {
+      align-items: center;
+      /*       border: solid 1px red; */
+      display: flex;
+      justify-content: center;
+      height: 60px;
+      gap: 0 20px;
+      width: 100%;
+
+      .form {
+        /*         border: solid 1px red; */
+      }
+
+      .select {
+        /*         border: solid 1px red; */
+      }
+
+      .button {
+        /*       border: solid 1px red; */
+      }
+    }
   }
-  .categories {
+  .listOfIngredients {
     align-items: center;
     border: solid 1px var(--color-border);
     border-radius: 4px;
+    color: var(--color-font);
     display: flex;
     flex-direction: column;
     width: 24%;
+
+    .ingredientsBox {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      justify-content: center;
+      .ingredient {
+        /*         border: solid 1px red; */
+        margin: 8px;
+      }
+    }
   }
 
   .recipesBox {

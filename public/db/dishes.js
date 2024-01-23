@@ -101,6 +101,8 @@ export const dishes = [
     fats: 10,
     carbons: 40,
     proteins: 15,
+    ingredients: ["papryka", "sałata"],
+    description: "Przepis z bazy na tortille",
   },
   {
     id: 6,
@@ -111,6 +113,8 @@ export const dishes = [
     fats: 35,
     carbons: 50,
     proteins: 15,
+    ingredients: ["papryka", "sałata"],
+    description: "Przepis z bazy na tortille",
   },
   {
     id: 7,
@@ -121,6 +125,8 @@ export const dishes = [
     fats: 35,
     carbons: 50,
     proteins: 15,
+    ingredients: ["papryka", "sałata"],
+    description: "Przepis z bazy na tortille",
   },
   {
     id: 8,
@@ -131,6 +137,8 @@ export const dishes = [
     fats: 35,
     carbons: 50,
     proteins: 15,
+    ingredients: ["papryka", "sałata"],
+    description: "Przepis z bazy na tortille",
   },
   {
     id: 9,
@@ -141,6 +149,8 @@ export const dishes = [
     fats: 35,
     carbons: 50,
     proteins: 15,
+    ingredients: ["papryka", "sałata"],
+    description: "Przepis z bazy na tortille",
   },
   {
     id: 10,
@@ -151,6 +161,8 @@ export const dishes = [
     fats: 35,
     carbons: 50,
     proteins: 15,
+    ingredients: ["papryka", "sałata"],
+    description: "Przepis z bazy na tortille",
   },
   {
     id: 11,
@@ -161,6 +173,8 @@ export const dishes = [
     fats: 35,
     carbons: 50,
     proteins: 15,
+    ingredients: ["papryka", "sałata"],
+    description: "Przepis z bazy na tortille",
   },
   {
     id: 12,
@@ -171,6 +185,8 @@ export const dishes = [
     fats: 35,
     carbons: 50,
     proteins: 15,
+    ingredients: ["papryka", "sałata"],
+    description: "Przepis z bazy na tortille",
   },
   {
     id: 13,
@@ -181,6 +197,8 @@ export const dishes = [
     fats: 35,
     carbons: 50,
     proteins: 15,
+    ingredients: ["papryka", "sałata"],
+    description: "Przepis z bazy na tortille",
   },
   {
     id: 14,
@@ -191,5 +209,7 @@ export const dishes = [
     fats: 35,
     carbons: 50,
     proteins: 15,
+    ingredients: ["papryka", "sałata"],
+    description: "Przepis z bazy na tortille",
   },
 ];
