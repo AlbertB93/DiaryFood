@@ -71,7 +71,6 @@ export const dishes = [
     ],
     description: "Przepis z bazy na tortille",
   },
-
   {
     id: 4,
     title: "Schab w sosie musztardowym",
@@ -91,7 +90,6 @@ export const dishes = [
     ],
     description: "Przepis z bazy na schab",
   },
-
   {
     id: 5,
     title: "Deser a'la szarlotka",

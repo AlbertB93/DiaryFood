@@ -4,7 +4,7 @@ import { SmallForm } from "../../Forms/SmallForm";
 import { Select } from "../../Select/Select";
 import { ButtonSmall } from "../../ButtonSmall/ButtonSmall";
 import { useState, useEffect } from "react";
-export function AllRecipes({ dishes, showHomePage }) {
+export function AllRecipes({ showHomePage }) {
   function handleHomePage() {
     showHomePage();
   }
@@ -53,18 +53,59 @@ export function AllRecipes({ dishes, showHomePage }) {
     setChoosenIngredients((prevState) => [...prevState, name]);
   }
 
-  let filteredDishes = dishes;
+  /* pobranie dishes */
+
+  useEffect(() => {
+    let isCancelled = false;
+
+    fetch("/db/dishes.json")
+      .then((res) => {
+        if (res.ok) {
+          setError(null);
+          return res.json();
+        }
+
+        throw new Error("Coś poszło nie tak...");
+      })
+      .then((res) => {
+        if (isCancelled) {
+          return;
+        }
+        setDishes(res);
+      })
+      .catch((e) => {
+        setError(e);
+      });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
+
+  const [dishes, setDishes] = useState([]);
+  let test = [];
 
   function zastosujFiltry() {
-    console.log(filteredDishes);
-    console.log("choosenIngredients[0]: " + choosenIngredients[0]);
-
-    filteredDishes = dishes.filter((dish) =>
-      dish.ingredients.includes("filet z kurczaka")
+    test = dishes.filter((dish) =>
+      dish.ingredients.includes(choosenIngredients[0])
     );
-    console.log("Nowa filtered: " + filteredDishes);
+    setDishes((prevState) => (prevState = test));
+    console.log("test: " + dishes);
+  }
 
-    console.log(filteredDishes);
+  const [testArr, setTestArr] = useState(["test", "test2"]);
+
+  function testFiltry() {
+    dishes.map((dish) => {
+      choosenIngredients.map((single) => {
+        if (dish.ingredients.includes(single) === true) {
+          console.log(dish.title);
+          console.log(dish.ingredients);
+        }
+      });
+    });
+    /*     setTestArr((prevState) => (prevState = test)); */
+    /*     console.log("filteredData: " + filteredData); */
   }
 
   return (
@@ -112,6 +153,7 @@ export function AllRecipes({ dishes, showHomePage }) {
         </div>
 
         <ButtonSmall onClick={zastosujFiltry}>Zastosuj filtr!</ButtonSmall>
+        <ButtonSmall onClick={testFiltry}>Test filtry!</ButtonSmall>
         <div className={styles.listOfIngredients}>
           {choosenIngredients.map((ingredient) => (
             <p key={ingredient}>{ingredient}</p>
@@ -119,7 +161,7 @@ export function AllRecipes({ dishes, showHomePage }) {
         </div>
       </div>
       <div className={styles.recipesBox}>
-        {filteredDishes.map((dish) => (
+        {dishes.map((dish) => (
           <SmallRecipe
             key={dish.id}
             id={dish.id}

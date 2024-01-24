@@ -1,0 +1,198 @@
+[
+  {
+    "id": 1,
+    "title": "Szakszuka",
+    "group": "breakfast",
+    "imageState": "/dishes/dish1.PNG?url",
+    "kcal": 430,
+    "fats": 20,
+    "carbons": 45,
+    "proteins": 36,
+    "ingredients": [
+      "makaron",
+      "mięso mielone wieprzowe",
+      "passata pomidorowa",
+      "cebula",
+      "oliwa z oliwek",
+      "ser parmezan"
+    ],
+    "description": "Przepis z bazy na szakszuke"
+  },
+  {
+    "id": 2,
+    "title": "Spaghetti",
+    "group": "dinner",
+    "imageState": "/dishes/dish2.PNG?url",
+    "kcal": 620,
+    "fats": 32,
+    "carbons": 60,
+    "proteins": 28,
+    "ingredients": [
+      "makaron",
+      "mięso mielone wieprzowe",
+      "passata pomidorowa",
+      "cebula",
+      "oliwa z oliwek",
+      "ser parmezan"
+    ],
+    "description": "Przepis z bazy na spaghetti"
+  },
+  {
+    "id": 3,
+    "title": "Tortilla z kurczakiem",
+    "group": "dinner",
+    "imageState": "/dishes/dish3.PNG?url",
+    "kcal": 320,
+    "fats": 10,
+    "carbons": 36,
+    "proteins": 20,
+    "ingredients": [
+      "tortilla pszenna",
+      "filet z kurczaka",
+      "ser żółty",
+      "ketchup",
+      "papryka",
+      "cebula"
+    ],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 4,
+    "title": "Schab w sosie musztardowym",
+    "group": "dinner",
+    "imageState": "/dishes/dish4.png?url",
+    "kcal": 500,
+    "fats": 30,
+    "carbons": 70,
+    "proteins": 25,
+    "ingredients": [
+      "tortilla pszenna",
+      "filet z kurczaka",
+      "ser żółty",
+      "ketchup",
+      "papryka",
+      "sałata"
+    ],
+    "description": "Przepis z bazy na schab"
+  },
+  {
+    "id": 5,
+    "title": "Deser a'la szarlotka",
+    "group": "dinner",
+    "imageState": "/dishes/dish5.PNG?url",
+    "kcal": 200,
+    "fats": 10,
+    "carbons": 40,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 6,
+    "title": "Naleśniki a'la bounty",
+    "group": "dinner",
+    "imageState": "/dishes/dish6.PNG?url",
+    "kcal": 400,
+    "fats": 35,
+    "carbons": 50,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 7,
+    "title": "Muffinki jajeczno warzywne",
+    "group": "dinner",
+    "imageState": "/dishes/dish7.jpg?url",
+    "kcal": 400,
+    "fats": 35,
+    "carbons": 50,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 8,
+    "title": "Pizza na tortilli",
+    "group": "dinner",
+    "imageState": "/dishes/dish8.jpg?url",
+    "kcal": 400,
+    "fats": 35,
+    "carbons": 50,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 9,
+    "title": "Sałatka z tortellini",
+    "group": "dinner",
+    "imageState": "/dishes/dish9.jpg?url",
+    "kcal": 400,
+    "fats": 35,
+    "carbons": 50,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 10,
+    "title": "Fit tiramisu",
+    "group": "dinner",
+    "imageState": "/dishes/dish10.jpg?url",
+    "kcal": 400,
+    "fats": 35,
+    "carbons": 50,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 11,
+    "title": "Naleśniki a'la bounty",
+    "group": "dinner",
+    "imageState": "/dishes/dish11.jpg?url",
+    "kcal": 400,
+    "fats": 35,
+    "carbons": 50,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 12,
+    "title": "Tortellini w sosie serowo pomidorowym",
+    "group": "dinner",
+    "imageState": "/dishes/dish12.jpg?url",
+    "kcal": 400,
+    "fats": 35,
+    "carbons": 50,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 13,
+    "title": "Sałatka z serem halloumi",
+    "group": "dinner",
+    "imageState": "/dishes/dish13.jpg?url",
+    "kcal": 400,
+    "fats": 35,
+    "carbons": 50,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 14,
+    "title": "Spaghetti carbonara",
+    "group": "dinner",
+    "imageState": "/dishes/dish14.jpg?url",
+    "kcal": 400,
+    "fats": 35,
+    "carbons": 50,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  }
+]
