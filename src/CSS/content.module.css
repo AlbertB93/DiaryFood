@@ -1,3 +1,25 @@
+@keyframes disapear {
+  to {
+    width: 0;
+    height: 20;
+    display: none;
+  }
+}
+
+@keyframes move {
+  100% {
+    opacity: 1;
+    /*     transform: translate(50px, 0); */
+    display: none;
+  }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 .content {
   align-items: center;
   /*   border: solid 3px var(--color-border); */
@@ -12,6 +34,9 @@
 }
 
 .dishes {
+  /*   animation: disapear 2s ease-out 3s infinite; */
+  animation: move 12s infinite ease-in-out;
+  animation-delay: 6s;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -20,8 +45,17 @@
   justify-content: space-around;
   overflow-x: hidden;
   width: 1000px;
+  /*   animation-name: disapear;
+  animation-delay: 5s;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease; */
 }
 
 .onBlur {
   filter: blur(3px);
+}
+
+.hidden {
+  display: hidden;
 }

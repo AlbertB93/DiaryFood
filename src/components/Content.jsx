@@ -69,10 +69,8 @@ export function Content({
     setRecipesOnHomePage([a, b, c]);
   }
 
-  /*   setTimeout(changeIsBlur, 2000);
-  setTimeout(setRandomRecipes, 4000); */
-  /*   setTimeout(changeIsBlur, 6000); */
-  /*  setInterval(setRandomRecipes, 5000); */
+  /*   setTimeout(changeIsBlur, 2000);*/
+  /*   setTimeout(setInterval(setRandomRecipes, 12000), 6000); */
 
   return (
     <div className={styles.content}>

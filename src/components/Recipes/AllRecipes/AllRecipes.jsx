@@ -4,6 +4,8 @@ import { SmallForm } from "../../Forms/SmallForm";
 import { Select } from "../../Select/Select";
 import { ButtonSmall } from "../../ButtonSmall/ButtonSmall";
 import { useState, useEffect } from "react";
+
+let filteredDishes = [];
 export function AllRecipes({ showHomePage }) {
   function handleHomePage() {
     showHomePage();
@@ -38,20 +40,14 @@ export function AllRecipes({ showHomePage }) {
 
   const [ingredients, setIngredients] = useState([]);
   const [error, setError] = useState(null);
-
   const [filter, setFilter] = useState("Wszystkie");
+  const [choosenIngredients, setChoosenIngredients] = useState([]);
+  const [dishes, setDishes] = useState([]);
+
   const filteredIngredients =
     filter === "Wszystkie"
       ? ingredients
       : ingredients.filter((ingredient) => ingredient.group === filter);
-
-  /* coś nowego */
-
-  const [choosenIngredients, setChoosenIngredients] = useState([]);
-
-  function dodajDoListy(name) {
-    setChoosenIngredients((prevState) => [...prevState, name]);
-  }
 
   /* pobranie dishes */
 
@@ -82,30 +78,29 @@ export function AllRecipes({ showHomePage }) {
     };
   }, []);
 
-  const [dishes, setDishes] = useState([]);
-  let test = [];
+  /* coś nowego */
 
-  function zastosujFiltry() {
-    test = dishes.filter((dish) =>
-      dish.ingredients.includes(choosenIngredients[0])
-    );
-    setDishes((prevState) => (prevState = test));
-    console.log("test: " + dishes);
+  function handleAddToChoosenIngredients(name) {
+    setChoosenIngredients((prevState) => [...prevState, name]);
   }
 
-  const [testArr, setTestArr] = useState(["test", "test2"]);
+  function setFiltersIngredients() {
+    /*     console.log(arrDishes); */
+    let isContainsAllIngredients = true;
 
-  function testFiltry() {
-    dishes.map((dish) => {
-      choosenIngredients.map((single) => {
-        if (dish.ingredients.includes(single) === true) {
-          console.log(dish.title);
-          console.log(dish.ingredients);
+    dishes.forEach((dish) => {
+      isContainsAllIngredients = true;
+      choosenIngredients.forEach((ingredient) => {
+        if (!dish.ingredients.includes(ingredient)) {
+          isContainsAllIngredients = false;
         }
       });
+      if (isContainsAllIngredients) {
+        filteredDishes.push(dish);
+      }
     });
-    /*     setTestArr((prevState) => (prevState = test)); */
-    /*     console.log("filteredData: " + filteredData); */
+
+    setDishes((prevState) => (prevState = filteredDishes));
   }
 
   return (
@@ -144,21 +139,20 @@ export function AllRecipes({ showHomePage }) {
                 <input
                   type="checkbox"
                   id={name}
-                  onChange={() => dodajDoListy(name)}
+                  onChange={() => handleAddToChoosenIngredients(name)}
+                  className={styles.testowy}
                 />{" "}
-                {name}
+                <label htmlFor="name">{name}</label>
               </div>
             ))
           )}
         </div>
 
-        <ButtonSmall onClick={zastosujFiltry}>Zastosuj filtr!</ButtonSmall>
-        <ButtonSmall onClick={testFiltry}>Test filtry!</ButtonSmall>
-        <div className={styles.listOfIngredients}>
-          {choosenIngredients.map((ingredient) => (
-            <p key={ingredient}>{ingredient}</p>
-          ))}
-        </div>
+        <ButtonSmall onClick={setFiltersIngredients}>
+          Zastosuj filtr!
+        </ButtonSmall>
+
+        <ButtonSmall onClick={setFiltersIngredients}>Wyczyść filtr</ButtonSmall>
       </div>
       <div className={styles.recipesBox}>
         {dishes.map((dish) => (

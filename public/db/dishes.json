@@ -12,7 +12,6 @@
       "makaron",
       "mięso mielone wieprzowe",
       "passata pomidorowa",
-      "cebula",
       "oliwa z oliwek",
       "ser parmezan"
     ],
@@ -120,7 +119,7 @@
     "fats": 35,
     "carbons": 50,
     "proteins": 15,
-    "ingredients": ["papryka", "sałata"],
+    "ingredients": ["papryka", "sałata", "polędwica sopocka"],
     "description": "Przepis z bazy na tortille"
   },
   {

@@ -71,6 +71,11 @@
     flex-direction: column;
     width: 24%;
 
+    input:checked + label {
+      color: red;
+      font-weight: bold;
+    }
+
     .ingredientsBox {
       align-items: center;
       display: flex;
@@ -80,6 +85,14 @@
       .ingredient {
         /*         border: solid 1px red; */
         margin: 8px;
+
+        input[type="checkbox"] {
+          accent-color: orange;
+        }
+
+        input[type="checkbox"]:checked + label {
+          color: orange;
+        }
       }
     }
   }
