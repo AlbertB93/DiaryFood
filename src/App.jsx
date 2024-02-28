@@ -8,8 +8,8 @@ const initialSummaryOfDay = { kcal: 0, fats: 0, carbons: 0, proteins: 0 };
 function App() {
   const [summaryOfDay, setSummaryOfDay] = useState(initialSummaryOfDay);
   const [showRecipe, setShowRecipe] = useState(false);
-  const [showMeals, setShowMeals] = useState(true);
-  const [showNewMeal, setShowNewMeal] = useState(false);
+  const [showMeals, setShowMeals] = useState(false);
+  const [showNewMeal, setShowNewMeal] = useState(true);
   /* DailMenu */
   const [listOfMeals, setListOfMeals] = useState([]);
   /* New Meal */

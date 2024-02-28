@@ -4,81 +4,29 @@ import { SmallForm } from "../../Forms/SmallForm";
 import { Select } from "../../Select/Select";
 import { ButtonSmall } from "../../ButtonSmall/ButtonSmall";
 import { useState, useEffect } from "react";
+import { useGetData } from "../../../hooks/useGetData";
 
 let filteredDishes = [];
 export function AllRecipes({ showHomePage }) {
-  function handleHomePage() {
-    showHomePage();
-  }
-
-  useEffect(() => {
-    let isCancelled = false;
-
-    fetch("/db/ingredients.json")
-      .then((res) => {
-        if (res.ok) {
-          setError(null);
-          return res.json();
-        }
-
-        throw new Error("Coś poszło nie tak...");
-      })
-      .then((res) => {
-        if (isCancelled) {
-          return;
-        }
-        setIngredients(res);
-      })
-      .catch((e) => {
-        setError(e);
-      });
-
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
-
-  const [ingredients, setIngredients] = useState([]);
-  const [error, setError] = useState(null);
   const [filter, setFilter] = useState("Wszystkie");
   const [choosenIngredients, setChoosenIngredients] = useState([]);
-  const [dishes, setDishes] = useState([]);
+  const { data: ingredients, error } = useGetData("/db/ingredients.json");
+  const {
+    data: dishes,
+    setData: setDishes,
+    setError,
+  } = useGetData("/db/dishes.json");
 
   const filteredIngredients =
     filter === "Wszystkie"
       ? ingredients
       : ingredients.filter((ingredient) => ingredient.group === filter);
 
-  /* pobranie dishes */
-
-  useEffect(() => {
-    let isCancelled = false;
-
-    fetch("/db/dishes.json")
-      .then((res) => {
-        if (res.ok) {
-          setError(null);
-          return res.json();
-        }
-
-        throw new Error("Coś poszło nie tak...");
-      })
-      .then((res) => {
-        if (isCancelled) {
-          return;
-        }
-        setDishes(res);
-      })
-      .catch((e) => {
-        setError(e);
-      });
-
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
-
   /* coś nowego */
+
+  function handleHomePage() {
+    showHomePage();
+  }
 
   function handleAddToChoosenIngredients(name) {
     setChoosenIngredients((prevState) => [...prevState, name]);

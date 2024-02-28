@@ -7,6 +7,7 @@ import { Form } from "../Forms/Form.jsx";
 import { ButtonSmall } from "../ButtonSmall/ButtonSmall.jsx";
 import { NewMealComposition } from "./NewMealComposition.jsx";
 import { NewIngredient } from "./NewIngredient.jsx";
+import { useGetData } from "../../hooks/useGetData.js";
 
 export function NewMeal({
   valuesOfMeal,
@@ -160,35 +161,7 @@ export function NewMeal({
 
   /* Testujemy */
 
-  const [ingredients, setIngredients] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    let isCancelled = false;
-
-    fetch("/db/ingredients.json")
-      .then((res) => {
-        if (res.ok) {
-          setError(null);
-          return res.json();
-        }
-
-        throw new Error("Coś poszło nie tak...");
-      })
-      .then((res) => {
-        if (isCancelled) {
-          return;
-        }
-        setIngredients(res);
-      })
-      .catch((e) => {
-        setError(e);
-      });
-
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
+  const { data: ingredients, error } = useGetData("/db/ingredients.json");
 
   const [filter, setFilter] = useState("Wszystkie");
   const filteredIngredients =

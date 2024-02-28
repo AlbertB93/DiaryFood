@@ -12,3 +12,10 @@ const ingredients = [
 2. Wyświetlanie składników w SingleRecipe. Pokazują się w SmallRecipe jednak nie chce ich przekazać dalej.
 
 
+Sources:
+
+1. https://www.youtube.com/@WszamTo
+2. https://www.youtube.com/@MartynaLoch
+3. https://www.youtube.com/@PoliczonaSzama
+4. https://aniagotuje.pl/
+5. https://mocnekalorie.com/
