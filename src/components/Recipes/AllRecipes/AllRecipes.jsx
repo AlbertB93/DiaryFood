@@ -17,6 +17,9 @@ export function AllRecipes({ showHomePage }) {
     setError,
   } = useGetData("/db/dishes.json");
 
+  const { data: dishesCopy, setData: setDishesCopy } =
+    useGetData("/db/dishes.json");
+
   const filteredIngredients =
     filter === "Wszystkie"
       ? ingredients
@@ -28,14 +31,17 @@ export function AllRecipes({ showHomePage }) {
     showHomePage();
   }
 
+  /*   setChoosenIngredients((prevState) =>
+    prevState.filter((name) => name.id !== id)
+  ); */
+
   function handleAddToChoosenIngredients(name) {
     setChoosenIngredients((prevState) => [...prevState, name]);
+    console.log(choosenIngredients);
   }
 
   function setFiltersIngredients() {
-    /*     console.log(arrDishes); */
     let isContainsAllIngredients = true;
-
     dishes.forEach((dish) => {
       isContainsAllIngredients = true;
       choosenIngredients.forEach((ingredient) => {
@@ -47,8 +53,17 @@ export function AllRecipes({ showHomePage }) {
         filteredDishes.push(dish);
       }
     });
-
     setDishes((prevState) => (prevState = filteredDishes));
+  }
+
+  function clearFiltersIngredients(e) {
+    setChoosenIngredients(() => []);
+    setDishes((prevState) => (prevState = dishesCopy));
+    filteredDishes = [];
+    let ingredients = document
+      .getElementById("ingredientsBox")
+      .getElementsByTagName("input");
+    Array.from(ingredients).forEach((ing) => (ing.checked = false));
   }
 
   return (
@@ -78,7 +93,7 @@ export function AllRecipes({ showHomePage }) {
           {" "}
           Wybierz grupę składników:
         </Select>
-        <div className={styles.ingredientsBox}>
+        <div className={styles.ingredientsBox} id="ingredientsBox">
           {error ? (
             <span>{error.message}</span>
           ) : (
@@ -95,12 +110,12 @@ export function AllRecipes({ showHomePage }) {
             ))
           )}
         </div>
-
+        <ButtonSmall onClick={clearFiltersIngredients}>
+          Wyczyść filtr
+        </ButtonSmall>
         <ButtonSmall onClick={setFiltersIngredients}>
           Zastosuj filtr!
         </ButtonSmall>
-
-        <ButtonSmall onClick={setFiltersIngredients}>Wyczyść filtr</ButtonSmall>
       </div>
       <div className={styles.recipesBox}>
         {dishes.map((dish) => (

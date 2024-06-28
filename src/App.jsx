@@ -9,7 +9,7 @@ function App() {
   const [summaryOfDay, setSummaryOfDay] = useState(initialSummaryOfDay);
   const [showRecipe, setShowRecipe] = useState(false);
   const [showMeals, setShowMeals] = useState(false);
-  const [showNewMeal, setShowNewMeal] = useState(true);
+  const [showNewMeal, setShowNewMeal] = useState(false);
   /* DailMenu */
   const [listOfMeals, setListOfMeals] = useState([]);
   /* New Meal */
@@ -22,7 +22,7 @@ function App() {
 
   /* Recipes */
 
-  const [showAllRecipes, setShowAllRecipes] = useState(false);
+  const [showAllRecipes, setShowAllRecipes] = useState(true);
 
   /*--------------------------*/
 

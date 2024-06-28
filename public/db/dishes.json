@@ -9,7 +9,7 @@
     "carbons": 45,
     "proteins": 36,
     "ingredients": [
-      "makaron",
+      "cebula",
       "mięso mielone wieprzowe",
       "passata pomidorowa",
       "oliwa z oliwek",
@@ -30,7 +30,6 @@
       "makaron",
       "mięso mielone wieprzowe",
       "passata pomidorowa",
-      "cebula",
       "oliwa z oliwek",
       "ser parmezan"
     ],
@@ -131,7 +130,7 @@
     "fats": 35,
     "carbons": 50,
     "proteins": 15,
-    "ingredients": ["papryka", "sałata"],
+    "ingredients": ["papryka", "cebula"],
     "description": "Przepis z bazy na tortille"
   },
   {
@@ -143,7 +142,7 @@
     "fats": 35,
     "carbons": 50,
     "proteins": 15,
-    "ingredients": ["papryka", "sałata"],
+    "ingredients": ["papryka", "sałata", "mix sałat"],
     "description": "Przepis z bazy na tortille"
   },
   {
@@ -187,6 +186,18 @@
     "title": "Spaghetti carbonara",
     "group": "dinner",
     "imageState": "/dishes/dish14.jpg?url",
+    "kcal": 400,
+    "fats": 35,
+    "carbons": 50,
+    "proteins": 15,
+    "ingredients": ["papryka", "sałata"],
+    "description": "Przepis z bazy na tortille"
+  },
+  {
+    "id": 15,
+    "title": "Białkowe brownie z banana i serka wiejskiego",
+    "group": "desserts",
+    "imageState": "/dishes/dish15.jpg?url",
     "kcal": 400,
     "fats": 35,
     "carbons": 50,
