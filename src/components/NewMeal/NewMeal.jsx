@@ -252,11 +252,9 @@ export function NewMeal({
                         +
                       </ButtonSmall>
                     </div>
-                    <img
-                      src={image}
-                      alt="FOTKA"
-                      className={styles.imgContainer}
-                    />
+                    <div className={styles.imgContainer}>
+                      <img src={image} alt="FOTKA" className={styles.imgFile} />
+                    </div>
                     <div className={styles.ingredientValues}>
                       <p>{kcal} kcal. </p>
                       <p>T: {fats}g. </p>

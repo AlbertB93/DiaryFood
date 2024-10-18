@@ -89,12 +89,23 @@
       }
 
       .imgContainer {
-        /*  border: solid 2px gold; */
+        align-items: center;
+        background-color: white;
+        border: solid 2px gold;
         aspect-ratio: 1;
         border-radius: 12px;
-        height: 60px;
+        display: flex;
+        justify-content: center;
+        max-height: 60px;
         margin: 4px;
-        /*    width: 60px; */
+        max-height: 60px;
+        overflow: hidden;
+
+        .imgFile {
+          border-radius: 12px;
+          max-height: 98%;
+          margin: 4px;
+        }
       }
 
       .ingredientValues {

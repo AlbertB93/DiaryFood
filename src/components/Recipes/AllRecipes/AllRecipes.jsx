@@ -1,14 +1,25 @@
 import styles from "./allRecipes.module.css";
-import { SmallRecipe } from "../../SmallRecipe";
-import { SmallForm } from "../../Forms/SmallForm";
+import { SmallestRecipe } from "../../SmallestRecipe";
+import { SingleRecipeSmall } from "../../SingleRecipeSmall";
 import { Select } from "../../Select/Select";
+import { SelectCategoriesReceips } from "../../Select/SelectCategoriesReceips";
+import { SelectCalories } from "../../Select/SelectCalories";
 import { ButtonSmall } from "../../ButtonSmall/ButtonSmall";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useGetData } from "../../../hooks/useGetData";
 
 let filteredDishes = [];
-export function AllRecipes({ showHomePage }) {
-  const [filter, setFilter] = useState("Wszystkie");
+export function AllRecipes({
+  showHomePage,
+  addToDailyMenu,
+  setActiveMeal,
+  activeMeal,
+}) {
+  const [showAllRecipes, setShowAllRecipes] = useState(true);
+  const [showRecipeSmall, setShowRecipeSmall] = useState(false);
+  const [filterIngredients, setFilterIngredients] = useState("Wszystkie");
+  const [filterRecipes, setFilterRecipes] = useState("Wszystkie");
+  const [filterCalories, setFilterCalories] = useState("Wszystkie");
   const [choosenIngredients, setChoosenIngredients] = useState([]);
   const { data: ingredients, error } = useGetData("/db/ingredients.json");
   const {
@@ -21,22 +32,32 @@ export function AllRecipes({ showHomePage }) {
     useGetData("/db/dishes.json");
 
   const filteredIngredients =
-    filter === "Wszystkie"
+    filterIngredients === "Wszystkie"
       ? ingredients
-      : ingredients.filter((ingredient) => ingredient.group === filter);
+      : ingredients.filter(
+          (ingredient) => ingredient.group === filterIngredients
+        );
 
-  /* coś nowego */
+  const filteredReceips =
+    filterRecipes === "Wszystkie"
+      ? dishes
+      : dishes.filter((dish) => dish.group === filterRecipes);
+
+  const filteredCalories =
+    filterCalories === "Wszystkie"
+      ? filteredReceips
+      : filteredReceips.filter(
+          (dish) => dish.groupOfCalories === filterCalories
+        );
 
   function handleHomePage() {
     showHomePage();
   }
 
-  /*   setChoosenIngredients((prevState) =>
-    prevState.filter((name) => name.id !== id)
-  ); */
-
   function handleAddToChoosenIngredients(name) {
+    console.log("Dodaje składnik do tablicy");
     setChoosenIngredients((prevState) => [...prevState, name]);
+    /*  setChoosenIngredients((prevState) => [...prevState, ", "]); */
     console.log(choosenIngredients);
   }
 
@@ -45,7 +66,7 @@ export function AllRecipes({ showHomePage }) {
     dishes.forEach((dish) => {
       isContainsAllIngredients = true;
       choosenIngredients.forEach((ingredient) => {
-        if (!dish.ingredients.includes(ingredient)) {
+        if (!dish.essentialIngredients.includes(ingredient)) {
           isContainsAllIngredients = false;
         }
       });
@@ -57,7 +78,9 @@ export function AllRecipes({ showHomePage }) {
   }
 
   function clearFiltersIngredients(e) {
-    setChoosenIngredients(() => []);
+    setChoosenIngredients((prevState) => (prevState = []));
+    console.log("Wyczyszczone?");
+    console.log(choosenIngredients);
     setDishes((prevState) => (prevState = dishesCopy));
     filteredDishes = [];
     let ingredients = document
@@ -68,28 +91,8 @@ export function AllRecipes({ showHomePage }) {
 
   return (
     <div className={styles.allRecipes}>
-      <div className={styles.headerAllRecipes}>
-        <div className={styles.headerAllRecipesText}>
-          <p> Zostało Ci kilka produktów i nie wiesz co ugotować?</p>
-          <p>
-            Wybierz składniki, które masz, a poniżej zostaną wyświetlone
-            przepisy zawierające te składniki !
-          </p>
-        </div>
-        <div className={styles.headerAllRecipesFilters}>
-          <div className={styles.select}>
-            <Select>Wybierz kategorie przepisu</Select>
-          </div>
-          <div className={styles.form}>
-            <SmallForm>Do ilu kalorii?</SmallForm>
-          </div>
-
-          <div className={styles.button}></div>
-          <ButtonSmall onClick={handleHomePage}>Strona główna </ButtonSmall>
-        </div>
-      </div>
       <div className={styles.listOfIngredients}>
-        <Select filter={filter} setFilter={setFilter}>
+        <Select filter={filterIngredients} setFilter={setFilterIngredients}>
           {" "}
           Wybierz grupę składników:
         </Select>
@@ -117,26 +120,75 @@ export function AllRecipes({ showHomePage }) {
           Zastosuj filtr!
         </ButtonSmall>
       </div>
+
+      <div className={styles.headerAllRecipes}>
+        <div className={styles.headerAllRecipesText}>
+          <p> Zostało Ci kilka produktów i nie wiesz co ugotować?</p>
+          <p>
+            Wybierz składniki, które masz, a poniżej zostaną wyświetlone
+            przepisy zawierające te składniki !
+          </p>
+        </div>
+        <div className={styles.headerAllRecipesFilters}>
+          <ButtonSmall onClick={handleHomePage}>Strona główna </ButtonSmall>
+          <div className={styles.select}>
+            <SelectCategoriesReceips
+              filter={filterRecipes}
+              setFilter={setFilterRecipes}
+            >
+              Wybierz kategorie przepisu
+            </SelectCategoriesReceips>
+          </div>
+          <div className={styles.select}>
+            <SelectCalories
+              filter={filterCalories}
+              setFilter={setFilterCalories}
+            >
+              Wybierz kaloryczność
+            </SelectCalories>
+          </div>
+        </div>
+      </div>
+
       <div className={styles.recipesBox}>
-        {dishes.map((dish) => (
-          <SmallRecipe
-            key={dish.id}
-            id={dish.id}
-            title={dish.title}
-            imgUrl={dish.imageState}
-            kcal={dish.kcal}
-            fats={dish.fats}
-            carbons={dish.carbons}
-            proteins={dish.proteins}
-            ingredients={dish.ingredients}
-            description={dish.description}
-            /*               addToDailyMenu={addToDailyMenu}
-              showMeals={showMeals}
-              setShowMeals={setShowMeals}
-              setShowRecipe={setShowRecipe}
-              setActiveMeal={setActiveMeal} */
-          />
-        ))}
+        {showAllRecipes && (
+          <div className={styles.recipes}>
+            <div className={styles.choosenIngredients}>
+              Wybrane składniki: {choosenIngredients}
+            </div>
+            {filteredCalories.map((dish) => (
+              <SmallestRecipe
+                key={dish.id}
+                id={dish.id}
+                title={dish.title}
+                imgUrl={dish.imageState}
+                kcal={dish.kcal}
+                fats={dish.fats}
+                carbons={dish.carbons}
+                proteins={dish.proteins}
+                servings={dish.servings}
+                essentialIngredients={dish.essentialIngredients}
+                weightEssentialIngredients={dish.weightEssentialIngredients}
+                description={dish.description}
+                addToDailyMenu={addToDailyMenu}
+                setActiveMeal={setActiveMeal}
+                setShowAllRecipes={() =>
+                  setShowAllRecipes((prevState) => !prevState)
+                }
+                setShowRecipeSmall={() =>
+                  setShowRecipeSmall((prevState) => !prevState)
+                }
+              />
+            ))}
+          </div>
+        )}
+        {showRecipeSmall && (
+          <SingleRecipeSmall
+            activeMeal={activeMeal}
+            setShowRecipeSmall={setShowRecipeSmall}
+            setShowAllRecipes={setShowAllRecipes}
+          ></SingleRecipeSmall>
+        )}
       </div>
     </div>
   );

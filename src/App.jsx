@@ -10,7 +10,7 @@ function App() {
   const [showRecipe, setShowRecipe] = useState(false);
   const [showMeals, setShowMeals] = useState(false);
   const [showNewMeal, setShowNewMeal] = useState(false);
-  /* DailMenu */
+  /* DailyMenu */
   const [listOfMeals, setListOfMeals] = useState([]);
   /* New Meal */
   const [valuesOfNewMeal, setValuesOfNewMeal] = useState({
@@ -21,7 +21,6 @@ function App() {
   });
 
   /* Recipes */
-
   const [showAllRecipes, setShowAllRecipes] = useState(true);
 
   /*--------------------------*/

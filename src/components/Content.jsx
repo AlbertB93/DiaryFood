@@ -1,11 +1,11 @@
 import styles from "../CSS/content.module.css";
 import { SmallRecipe } from "./SmallRecipe";
-import { dishes } from "../data/dishes.js";
 import { Header } from "./Header.jsx";
 import { SingleRecipe } from "./SingleRecipe.jsx";
 import { useState } from "react";
 import { NewMeal } from "./NewMeal/NewMeal.jsx";
 import { AllRecipes } from "./Recipes/AllRecipes/AllRecipes.jsx";
+import { useGetData } from "../hooks/useGetData";
 
 const initialCurrentMeal = {
   id: 0,
@@ -36,6 +36,12 @@ export function Content({
   const [activeMeal, setActiveMeal] = useState(initialCurrentMeal);
   const [recipesOnHomePage, setRecipesOnHomePage] = useState([1, 2, 3]);
   const [isBlur, setIsBlur] = useState(true);
+
+  const {
+    data: dishes,
+    setData: setDishes,
+    setError,
+  } = useGetData("/db/dishes.json");
 
   let activeDishes = dishes.filter(
     (meal) =>
@@ -69,7 +75,7 @@ export function Content({
     setRecipesOnHomePage([a, b, c]);
   }
 
-  /*   setTimeout(changeIsBlur, 2000);*/
+  /*   setTimeout(changeIsBlur, 2000); */
   /*   setTimeout(setInterval(setRandomRecipes, 12000), 6000); */
 
   return (
@@ -124,7 +130,16 @@ export function Content({
         ></NewMeal>
       )}
       {showAllRecipes && (
-        <AllRecipes dishes={dishes} showHomePage={showHomePage}></AllRecipes>
+        <AllRecipes
+          dishes={dishes}
+          showHomePage={showHomePage}
+          addToDailyMenu={addToDailyMenu}
+          showMeals={showMeals}
+          setShowMeals={setShowMeals}
+          setShowRecipe={setShowRecipe}
+          setActiveMeal={setActiveMeal}
+          activeMeal={activeMeal}
+        ></AllRecipes>
       )}
     </div>
   );
